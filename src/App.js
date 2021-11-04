@@ -1,5 +1,14 @@
+import LandingPage from './Components/LandingPage';
+// import SortingPage from './Components/SortingPage';
+import Nav from './Components/Nav';
+
 function App() {
-  return <div>Hello World</div>;
+  return (
+    <>
+      <Nav />
+      <LandingPage />
+    </>
+  );
 }
 
 export default App;
