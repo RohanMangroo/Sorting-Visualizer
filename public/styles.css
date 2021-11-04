@@ -9,7 +9,23 @@
   --width: 100vw;
   --space-between: 5px;
   --nav-bar-height: 52px;
-  --page-container: calc(100vh - var(--nav-bar-height));
+
+  /*Page container*/
+  --lp-page-container: calc(100vh - var(--nav-bar-height));
+
+  /*Landing Page sub-containers*/
+  --lp-sub-container-height: calc(
+    var(--lp-page-container) - var(--space-between) * 2
+  );
+  --lp-sub-container-width: calc(var(--width) / 2);
+
+  /*Image Container*/
+  --image-container-width: calc(
+    var(--lp-sub-container-width) - var(--space-between) * 10
+  );
+  --image-container-height: calc(
+    var(--lp-sub-container-height) - var(--space-between) * 10
+  );
 }
 
 .nav {
@@ -18,17 +34,17 @@
   background-color: var(--primary);
 }
 
-.page-container {
+.lp-page-container {
   width: var(width);
-  height: var(--page-container);
+  height: var(--lp-page-container);
   display: flex;
   justify-content: space-between;
 }
 
 /*Landing Page*/
 .lp-subcontainer {
-  height: calc(var(--page-container) - 2 * var(--space-between));
-  width: calc(var(--width) / 2);
+  height: var(--lp-sub-container-height);
+  width: var(--lp-sub-container-width);
   margin: var(--space-between);
 }
 
@@ -40,4 +56,21 @@
 .lp-right {
   background-color: var(--primary);
   margin-left: calc(var(--space-between) / 2);
+}
+
+.image-container {
+  overflow: hidden;
+  width: var(--image-container-width);
+  height: var(--image-container-height);
+  margin: calc(var(--space-between) * 5);
+}
+
+.lp-image {
+  width: var(--image-container-width);
+  height: var(--image-container-height);
+  /*Here I'm using the object-fit property to fit the image into the div container. Remember to always give the image a height and width before using object-fit*/
+  object-fit: cover;
+  /*Here I'm position the image using object-position property*/
+  object-position: 20% 30%;
+  /* margin: calc(var(--space-between) * 5); */
 }
