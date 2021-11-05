@@ -1,7 +1,7 @@
 import React from 'react';
 import sortingVizImage from '../Images/sortingVizImage.jpg';
 
-export default function LandingPage() {
+export default function LandingPage({ handleClick }) {
   return (
     <div className="lp-page-container">
       <div className="lp-subcontainer lp-left">
@@ -33,7 +33,7 @@ export default function LandingPage() {
 
           <div className="lp-left-bottom">
             <div>
-              <button>SORT</button>
+              <button onClick={() => handleClick()}>SORT</button>
             </div>
           </div>
         </div>
