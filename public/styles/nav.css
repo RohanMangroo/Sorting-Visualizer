@@ -1,0 +1,20 @@
+* {
+  /*-----------Nav Vars-----------*/
+  --nav-bar-height: 52px;
+}
+
+nav {
+  display: flex;
+  justify-content: end;
+  width: var(width);
+  height: var(--nav-bar-height);
+  background-color: var(--primary);
+}
+
+.title {
+  color: white;
+  font-size: 30px;
+  font-weight: normal;
+  align-self: center;
+  margin-right: 30px;
+}
