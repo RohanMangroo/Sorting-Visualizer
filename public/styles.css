@@ -71,10 +71,7 @@
 .lp-image {
   width: var(--image-container-width);
   height: var(--image-container-height);
-  /*Here I'm using the object-fit property to fit the image into the div container. Remember to always give the image a height and width before using object-fit*/
   object-fit: cover;
-  /*Here I'm position the image using object-position property*/
   object-position: 20% 42%;
-  /* margin: calc(var(--space-between) * 5); */
   opacity: 65%;
 }
