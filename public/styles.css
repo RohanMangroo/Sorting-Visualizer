@@ -6,9 +6,12 @@
   --primary: #6da7fe;
   --secondary: #ffcb77;
 
+  /*Nav*/
+  --nav-bar-height: 52px;
+
+  /*General vars*/
   --width: 100vw;
   --space-between: 5px;
-  --nav-bar-height: 52px;
 
   /*Page container*/
   --lp-page-container: calc(100vh - var(--nav-bar-height));
@@ -71,6 +74,7 @@
   /*Here I'm using the object-fit property to fit the image into the div container. Remember to always give the image a height and width before using object-fit*/
   object-fit: cover;
   /*Here I'm position the image using object-position property*/
-  object-position: 20% 30%;
+  object-position: 20% 42%;
   /* margin: calc(var(--space-between) * 5); */
+  opacity: 65%;
 }
