@@ -1,0 +1,28 @@
+* {
+  --page-bottom-right-height: var(--page-child-height-bottom);
+  --page-bottom-right-width: calc(var(--width) * 1 / 5);
+
+  --metric-container-height: calc(var(--page-child-height-bottom) * 4 / 5);
+  --metric-container-width: calc(var(--page-bottom-right-width) * 6 / 7);
+
+  --metric-sub-container-height: calc(var(--metric-container-height) / 2);
+  --metric-sub-container-width: var(--metric-container-width);
+}
+
+.metrics-container {
+  height: var(--metric-container-height);
+  width: var(--metric-container-width);
+  margin: var(--space);
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metrics-sub-container {
+  background-color: var(--secondary-accent);
+  border-radius: 10px;
+  height: var(--metric-sub-container-height);
+  width: var(--metric-sub-container-width);
+}

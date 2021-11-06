@@ -20,7 +20,7 @@ export default function SortingPage() {
           <Controls />
         </div>
         <div className="page-bottom-mid">
-          <Button />
+          <Button name="START" type="start-btn" />
         </div>
         <div className="page-bottom-right">
           <Metrics />

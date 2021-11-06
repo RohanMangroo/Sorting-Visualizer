@@ -22,13 +22,6 @@
   --page-child-height-top: calc(var(--page-height) * 2 / 3);
   --page-child-height-bottom: calc(var(--page-height) * 1 / 3);
   --page-bottom-mid-width: calc(var(--width) * 1 / 5);
-
-  /*-----Button Vars-----*/
-  --btn-container-height: calc(var(--page-child-height-bottom) / 2);
-  --btn-container-width: calc(var(--page-bottom-mid-width) / 2);
-
-  --btn-padding: calc(var(--btn-container-width) / 7);
-  --btn-font-size: calc(var(--btn-container-width) / 7);
 }
 
 .page {
@@ -73,7 +66,7 @@
 }
 
 .page-bottom-mid {
-  background-color: var(--secondary);
+  background-color: var(--primary);
   height: var(--page-child-height-bottom);
   width: var(--page-bottom-mid-width);
   margin: 0 var(--space) var(--space) 0;
@@ -86,38 +79,6 @@
   height: var(--page-child-height-bottom);
   width: calc(var(--width) * 1 / 5);
   margin: 0 var(--space) var(--space) 0;
-}
-
-/*Button*/
-.btn-container {
-  height: var(--btn-container-height);
-  width: var(--btn-container-width);
-  align-self: center;
   display: flex;
   justify-content: center;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.btn {
-  align-self: center;
-  border-style: none;
-  padding: var(--btn-padding);
-  color: white;
-  font-size: var(--btn-font-size);
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}
-
-.btn:active {
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
-}
-/*Start Button*/
-.start-btn-container {
-  background-color: var(--green-accent);
-}
-
-.start-btn {
-  background-color: var(--green);
 }

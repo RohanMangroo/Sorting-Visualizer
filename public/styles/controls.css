@@ -2,13 +2,14 @@
   --page-bottom-left-height: var(--page-child-height-bottom);
   --page-bottom-left-width: calc(var(--width) * 3 / 5);
 
-  --controls-container-height: calc(var(--page-child-height-bottom) * 3 / 5);
-  --controls-container-width: calc(var(--page-bottom-left-width) * 6 / 7);
+  --controls-container-height: calc(var(--page-child-height-bottom) * 4 / 5);
+  --controls-container-width: calc(var(--page-bottom-left-width) * 6.5 / 7);
 }
 
 .controls-container {
   height: var(--controls-container-height);
   width: var(--controls-container-width);
+  margin: calc(var(--space));
   align-self: center;
   /*Container for all Control components*/
   display: flex;
