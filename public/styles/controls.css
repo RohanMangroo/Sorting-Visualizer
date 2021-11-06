@@ -4,6 +4,19 @@
 
   --controls-container-height: calc(var(--page-child-height-bottom) * 4 / 5);
   --controls-container-width: calc(var(--page-bottom-left-width) * 6.5 / 7);
+
+  --algo-button-container-height: var(--controls-container-height);
+  --algo-buttons-container-width: calc(var(--controls-container-width) * 2 / 3);
+
+  --algo-buttons-height: calc(var(--controls-container-height) * 2 / 3);
+  --algo-buttons-width: calc(var(--algo-buttons-container-width) * 2.7 / 3);
+
+  --button-height: calc(var(--algo-buttons-height) * 1 / 4);
+  --button-width: calc(var(--algo-buttons-width) * 1 / 4);
+
+  --button-font-size: calc(var(--button-width) * 8 / 100);
+
+  --button-inactive-bg-color: #c4c4c4;
 }
 
 .controls-container {
@@ -18,10 +31,46 @@
 .algo-buttons-container {
   background-color: var(--secondary);
   border-radius: 10px;
-  height: var(--controls-container-height);
-  width: calc(var(--controls-container-width) * 2 / 3);
+  height: var(--algo-button-container-height);
+  width: var(--algo-buttons-container-width);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-right: calc(var(--space) * 2);
+  display: flex;
+  justify-content: center;
+}
+
+.algo-buttons {
+  height: var(--algo-buttons-height);
+  width: var(--algo-buttons-width);
+  display: flex;
+  justify-content: space-evenly;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+}
+
+.algo-buttons > button {
+  border-style: none;
+  border-radius: 10px;
+  height: var(--button-height);
+  width: var(--button-width);
+  font-size: var(--button-font-size);
+  margin-right: var(--space);
+  background-color: var(--button-inactive-bg-color);
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* .algo-buttons:active > button {
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+  color: var(--green-accent);
+} */
+
+.algo-buttons .active-btn {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: none;
 }
 
 .sliders {

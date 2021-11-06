@@ -3,7 +3,16 @@ import React from 'react';
 export default function Controls() {
   return (
     <div className="controls-container">
-      <div className="algo-buttons-container"></div>
+      <div className="algo-buttons-container">
+        <div className="algo-buttons">
+          <button>BUBBLE</button>
+          <button>SELECTION</button>
+          <button className="active-btn">INSERTION</button>
+          <button>QUICK</button>
+          <button>MERGE</button>
+          <button>HEAP</button>
+        </div>
+      </div>
       <div className="sliders"></div>
     </div>
   );
