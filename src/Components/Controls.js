@@ -13,7 +13,26 @@ export default function Controls() {
           <button>HEAP</button>
         </div>
       </div>
-      <div className="sliders"></div>
+      <div className="sliders">
+        <input
+          type="range"
+          name="bars"
+          defaultValue="200"
+          min="20"
+          max="400"
+          step="0"
+          className="slider"
+        />
+        <input
+          type="range"
+          name="bars"
+          defaultValue="200"
+          min="20"
+          max="400"
+          step="0"
+          className="slider"
+        />
+      </div>
     </div>
   );
 }

@@ -11,7 +11,7 @@
   --algo-buttons-height: calc(var(--controls-container-height) * 2 / 3);
   --algo-buttons-width: calc(var(--algo-buttons-container-width) * 2.7 / 3);
 
-  --button-height: calc(var(--algo-buttons-height) * 1 / 4);
+  --button-height: calc(var(--algo-buttons-height) * 1.5 / 4);
   --button-width: calc(var(--algo-buttons-width) * 1 / 4);
 
   --button-font-size: calc(var(--button-width) * 8 / 100);
@@ -62,10 +62,9 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* .algo-buttons:active > button {
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
-  color: var(--green-accent);
-} */
+.algo-buttons > button:active {
+  box-shadow: none;
+}
 
 .algo-buttons .active-btn {
   background-color: var(--primary);
@@ -79,4 +78,62 @@
   height: var(--controls-container-height);
   width: calc(var(--controls-container-width) * 1 / 3);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
+
+.slider {
+  -webkit-appearance: none;
+  width: 75%;
+  border-radius: 10px;
+  height: 30px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+/* .slidecontainer {
+  width: 100%;
+} */
+
+/* .slider {
+  
+  width: 75%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+} */
