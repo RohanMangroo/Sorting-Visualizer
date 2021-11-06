@@ -1,7 +1,7 @@
 import React from 'react';
 import Controls from './Controls';
 import Bars from './Bars';
-import TextCode from './TextCode';
+import Button from './Button';
 import Metrics from './Metrics';
 
 export default function SortingPage() {
@@ -20,7 +20,7 @@ export default function SortingPage() {
           <Controls />
         </div>
         <div className="page-bottom-mid">
-          <TextCode />
+          <Button />
         </div>
         <div className="page-bottom-right">
           <Metrics />
