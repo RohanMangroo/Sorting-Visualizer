@@ -65,9 +65,11 @@
 }
 
 .page-bottom .page-bottom-left {
-  background-color: var(--secondary);
+  background-color: var(--primary);
   margin: 0 var(--space) 0 var(--space);
   width: calc(var(--width) / 0.7);
+  display: flex;
+  justify-content: center;
 }
 
 .page-bottom .page-bottom-mid {
@@ -77,7 +79,7 @@
 }
 
 .page-bottom .page-bottom-right {
-  background-color: var(--primary);
+  background-color: var(--secondary);
   width: calc(var(--width) / 2);
   margin: 0 var(--space) 0 0;
 }

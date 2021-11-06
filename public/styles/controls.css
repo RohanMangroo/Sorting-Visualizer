@@ -1,0 +1,39 @@
+* {
+  --control-container-height: var(--page-child-height);
+  --control-container-width: calc(var(--width) / 0.7);
+}
+
+.controls-container {
+  height: calc(var(--control-container-height) * 0.9);
+  width: calc(var(--control-container-width) * 0.385);
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.controls-container span {
+  background-color: white;
+  height: calc(var(--control-container-height) / 6 - var(--space) * 3);
+  width: calc(var(--control-container-width) / 5);
+  align-self: center;
+}
+.controls-container > div {
+  height: calc(var(--control-container-height) / 3 - var(--space) * 3);
+  width: calc(var(--control-container-width) / 3);
+  align-self: center;
+}
+
+.button-container {
+  border-radius: 10px;
+  background-color: var(--secondary);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.controls-bottom {
+  display: flex;
+}
+.controls-bottom div {
+  border: solid green;
+  width: calc(var(--control-container-width) / 2);
+}
