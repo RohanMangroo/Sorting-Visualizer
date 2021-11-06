@@ -1,39 +1,32 @@
 * {
-  --control-container-height: var(--page-child-height);
-  --control-container-width: calc(var(--width) / 0.7);
+  --page-bottom-left-height: var(--page-child-height-bottom);
+  --page-bottom-left-width: calc(var(--width) * 3 / 5);
+
+  --controls-container-height: calc(var(--page-child-height-bottom) * 3 / 5);
+  --controls-container-width: calc(var(--page-bottom-left-width) * 6 / 7);
 }
 
 .controls-container {
-  height: calc(var(--control-container-height) * 0.9);
-  width: calc(var(--control-container-width) * 0.385);
+  height: var(--controls-container-height);
+  width: var(--controls-container-width);
   align-self: center;
+  /*Container for all Control components*/
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 }
 
-.controls-container span {
-  background-color: white;
-  height: calc(var(--control-container-height) / 6 - var(--space) * 3);
-  width: calc(var(--control-container-width) / 5);
-  align-self: center;
-}
-.controls-container > div {
-  height: calc(var(--control-container-height) / 3 - var(--space) * 3);
-  width: calc(var(--control-container-width) / 3);
-  align-self: center;
-}
-
-.button-container {
-  border-radius: 10px;
+.algo-buttons-container {
   background-color: var(--secondary);
+  border-radius: 10px;
+  height: var(--controls-container-height);
+  width: calc(var(--controls-container-width) * 2 / 3);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-right: calc(var(--space) * 2);
 }
 
-.controls-bottom {
-  display: flex;
-}
-.controls-bottom div {
-  border: solid green;
-  width: calc(var(--control-container-width) / 2);
+.sliders {
+  background-color: var(--secondary);
+  border-radius: 10px;
+  height: var(--controls-container-height);
+  width: calc(var(--controls-container-width) * 1 / 3);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
