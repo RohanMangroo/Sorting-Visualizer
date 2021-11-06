@@ -1,0 +1,83 @@
+* {
+  font-family: 'RobotoCondensed', sans-serif;
+  margin: 0px;
+  padding: 0px;
+
+  /*Colors*/
+  --primary: #6da7fe;
+  --secondary: #ffcb77;
+  --secondary-accent: #fbb94f;
+  --green: #4bb575;
+  --green-accent: #7cc8b1;
+  --red: #fe7d7d;
+  --red-accent: #fb9b43;
+
+  /*---------General Vars---------*/
+  --width: 100vw;
+  --space-between: 5px;
+  --space: 10px;
+
+  /*------Page Vars------*/
+  --page-height: calc(100vh - var(--nav-bar-height));
+  --page-child-height: calc(var(--page-height) / 2 - var(--space) * 1.5);
+}
+
+.page {
+  height: var(--page-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.page > div {
+  height: var(--page-child-height);
+}
+
+/*Page Top*/
+.page-top {
+  display: flex;
+}
+
+.page-top > div {
+  height: var(--page-child-height);
+  width: calc(var(--width) / 2);
+}
+
+.page-top .page-top-left {
+  background-color: var(--secondary);
+  margin: 0 var(--space) 0 var(--space);
+}
+
+.page-top .page-top-right {
+  background-color: var(--primary);
+  width: calc(var(--width) / 0.7);
+  margin: 0 var(--space) 0 0;
+}
+
+/*Page Bottom*/
+.page-bottom {
+  display: flex;
+}
+
+.page-bottom > div {
+  height: var(--page-child-height);
+  width: calc(var(--width) / 2);
+}
+
+.page-bottom .page-bottom-left {
+  background-color: var(--secondary);
+  margin: 0 var(--space) 0 var(--space);
+  width: calc(var(--width) / 0.7);
+}
+
+.page-bottom .page-bottom-mid {
+  background-color: var(--secondary);
+  margin: 0 var(--space) 0 0;
+  width: calc(var(--width) / 2);
+}
+
+.page-bottom .page-bottom-right {
+  background-color: var(--primary);
+  width: calc(var(--width) / 2);
+  margin: 0 var(--space) 0 0;
+}
