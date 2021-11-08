@@ -17,6 +17,9 @@
   --button-font-size: calc(var(--button-width) * 8 / 100);
 
   --button-inactive-bg-color: #c4c4c4;
+
+  --sliders-container-width: calc(var(--controls-container-width) * 1 / 3);
+  --sliders-thumb-width: calc(var(--sliders-container-width) * 1 / 9);
 }
 
 .controls-container {
@@ -76,7 +79,7 @@
   background-color: var(--secondary);
   border-radius: 10px;
   height: var(--controls-container-height);
-  width: calc(var(--controls-container-width) * 1 / 3);
+  width: var(--sliders-container-width);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
@@ -87,14 +90,14 @@
 .slider {
   -webkit-appearance: none;
   width: 75%;
+  height: 15%;
   border-radius: 10px;
-  height: 30px;
 }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 40px;
-  height: 40px;
+  width: var(--sliders-thumb-width);
+  height: var(--sliders-thumb-width);
   border-radius: 50%;
   background: var(--primary);
   cursor: pointer;
