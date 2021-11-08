@@ -1,17 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
+import { updateBars } from '../store/local';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function Bars() {
-  const [heights, setHeights] = useState([]);
-  const [nums, setNums] = useState([]);
+function Bars({ update, heights }) {
   const barsContainer = useRef(null);
 
-  useEffect(() => {
+  useEffect((props) => {
     const containerHeight = barsContainer.current.clientHeight;
     const { nums, arrayOfHeights } = genArray(200, containerHeight);
 
-    setHeights(arrayOfHeights);
-    setNums(nums);
+    update(nums, arrayOfHeights);
   }, []);
 
   return (
@@ -46,27 +45,19 @@ function genRandomNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-//-------------------------//
-// async function bubbleSort(bars, array) {
-//   bars = Array.from(bars);
-//   for (let i = 0; i < array.length; i++) {
-//     for (let j = 0; j < array.length - 1; j++) {
-//       // bars[j].style.backgroundColor = 'blue';
+const mapStateToProps = (state) => {
+  return {
+    nums: state.nums,
+    heights: state.heights,
+  };
+};
 
-//       if (array[j] > array[j + 1]) {
-//         [array[j], array[j + 1]] = [array[j + 1], array[j]];
+const mapDispatchToProps = (dispatch) => {
+  return {
+    update: function (nums, heights) {
+      return dispatch(updateBars(nums, heights));
+    },
+  };
+};
 
-//         await new Promise((resolve) =>
-//           setTimeout(() => {
-//             const heightOne = bars[j].style.height;
-//             const heightTwo = bars[j + 1].style.height;
-//             bars[j].style.height = heightTwo;
-//             bars[j + 1].style.height = heightOne;
-
-//             resolve();
-//           }, 100)
-//         );
-//       }
-//     }
-//   }
-// }
+export default connect(mapStateToProps, mapDispatchToProps)(Bars);
