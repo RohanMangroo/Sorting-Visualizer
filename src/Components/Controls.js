@@ -1,11 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import bubbleSort from '../Algorithms/bubbleSort';
 
-export default function Controls() {
+function Controls({ nums, bars }) {
   return (
     <div className="controls-container">
       <div className="algo-buttons-container">
         <div className="algo-buttons">
-          <button className="active-btn">BUBBLE</button>
+          <button className="active-btn" onClick={() => bubbleSort(nums, bars)}>
+            BUBBLE
+          </button>
           <button>SELECTION</button>
           <button>INSERTION</button>
           <button>QUICK</button>
@@ -36,3 +40,12 @@ export default function Controls() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    nums: state.nums,
+    bars: state.bars,
+  };
+};
+
+export default connect(mapStateToProps, null)(Controls);

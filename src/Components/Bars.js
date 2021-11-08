@@ -1,21 +1,25 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { updateBars } from '../store/local';
+import { genArray } from '../utils';
+//Using the uuid libary for unique identifiers for react keys
 import { v4 as uuidv4 } from 'uuid';
 
-function Bars({ update, heights }) {
+function Bars({ update, initialHeights }) {
+  //A 'ref' used to get the container height
   const barsContainer = useRef(null);
 
   useEffect((props) => {
     const containerHeight = barsContainer.current.clientHeight;
     const { nums, arrayOfHeights } = genArray(200, containerHeight);
 
-    update(nums, arrayOfHeights);
+    //A Redux action creator that updates the numbers array and the display heights in the redux state
+    update(nums, barsContainer.current.childNodes, arrayOfHeights);
   }, []);
 
   return (
     <div ref={barsContainer} className="bars-container">
-      {heights.map((height) => (
+      {initialHeights.map((height) => (
         <div
           className="bar"
           key={uuidv4()}
@@ -26,36 +30,17 @@ function Bars({ update, heights }) {
   );
 }
 
-function genArray(value, containerHeight) {
-  const arrayOfNums = [];
-  const arrayOfHeights = [];
-  for (let i = 0; i < value; i++) {
-    const randomNum = genRandomNum(5, 450);
-    const heightPercentage = (randomNum / containerHeight) * 100;
-    arrayOfNums.push(randomNum);
-    arrayOfHeights.push(heightPercentage);
-  }
-  return {
-    nums: arrayOfNums,
-    arrayOfHeights,
-  };
-}
-
-function genRandomNum(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 const mapStateToProps = (state) => {
   return {
     nums: state.nums,
-    heights: state.heights,
+    initialHeights: state.initialHeights,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    update: function (nums, heights) {
-      return dispatch(updateBars(nums, heights));
+    update: (nums, bars, initialHeights) => {
+      return dispatch(updateBars(nums, bars, initialHeights));
     },
   };
 };
