@@ -1,0 +1,22 @@
+* {
+  --bars-container-height: calc(
+    (var(--page-child-height-top) - (2 * var(--space))) * 0.93
+  );
+  --bars-container-width: calc(calc(var(--width) * 3 / 4) * 0.96);
+}
+
+.bars-container {
+  height: var(--bars-container-height);
+  width: var(--bars-container-width);
+  display: flex;
+  gap: 1px;
+  justify-content: space-between;
+  align-self: center;
+  margin: var(--space);
+  align-items: flex-end;
+}
+
+.bar {
+  background-color: white;
+  width: 20%;
+}

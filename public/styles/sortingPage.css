@@ -47,6 +47,8 @@
   background-color: var(--primary);
   margin: var(--space) var(--space) var(--space) 0;
   width: calc(var(--width) * 3 / 4);
+  display: flex;
+  justify-content: center;
 }
 
 /*Page Bottom*/

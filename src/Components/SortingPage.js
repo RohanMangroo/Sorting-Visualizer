@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Controls from './Controls';
 import Bars from './Bars';
 import Button from './Button';

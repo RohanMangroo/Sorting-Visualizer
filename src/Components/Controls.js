@@ -5,9 +5,9 @@ export default function Controls() {
     <div className="controls-container">
       <div className="algo-buttons-container">
         <div className="algo-buttons">
-          <button>BUBBLE</button>
+          <button className="active-btn">BUBBLE</button>
           <button>SELECTION</button>
-          <button className="active-btn">INSERTION</button>
+          <button>INSERTION</button>
           <button>QUICK</button>
           <button>MERGE</button>
           <button>HEAP</button>
