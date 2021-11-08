@@ -1,3 +1,9 @@
+@media screen and (max-height: 500px) and (min-width: 900px) {
+  .start-btn {
+    --start-btn-font-size: calc(var(--start-btn-height) / 1.5);
+  }
+}
+
 * {
   /*-----Button Vars-----*/
 
@@ -5,8 +11,9 @@
   --start-btn-container-height: var(--page-child-height-bottom);
   --start-btn-container-width: var(--page-bottom-mid-width);
 
-  --start-btn-padding: calc(var(--start-btn-container-width) / 7);
-  --start-btn-font-size: calc(var(--start-btn-container-width) / 7);
+  --start-btn-height: calc(var(--start-btn-container-height) / 2);
+  --start-btn-width: calc(var(--page-bottom-mid-width) / 1.5);
+  --start-btn-font-size: calc(var(--start-btn-width) / 4);
 
   /*Stop*/
   --stop-btn-container-height: calc(var(--page-child-height-bottom) / 4);
@@ -43,7 +50,9 @@
 }
 
 .start-btn {
-  padding: var(--start-btn-padding);
+  /* padding: var(--start-btn-padding); */
+  height: var(--start-btn-height);
+  width: var(--start-btn-width);
   background-color: var(--green);
   font-size: var(--start-btn-font-size);
 }
