@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import { updateBars } from '../store/local';
+import { updateBars } from '../store/barsReducer';
 import { genArray } from '../utils';
 //Using the uuid libary for unique identifiers for react keys
 import { v4 as uuidv4 } from 'uuid';
@@ -30,17 +30,17 @@ function Bars({ update, initialHeights }) {
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ bars }) => {
   return {
-    nums: state.nums,
-    initialHeights: state.initialHeights,
+    nums: bars.nums,
+    initialHeights: bars.initialHeights,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    update: (nums, bars, initialHeights) => {
-      return dispatch(updateBars(nums, bars, initialHeights));
+    update: (nums, displayBars, initialHeights) => {
+      return dispatch(updateBars(nums, displayBars, initialHeights));
     },
   };
 };

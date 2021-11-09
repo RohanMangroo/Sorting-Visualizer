@@ -41,10 +41,10 @@ function Controls({ nums, bars }) {
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ bars }) => {
   return {
-    nums: state.nums,
-    bars: state.bars,
+    nums: bars.nums,
+    bars: bars.displayBars,
   };
 };
 

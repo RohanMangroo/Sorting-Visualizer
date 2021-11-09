@@ -4,12 +4,12 @@ import { createStore } from 'redux';
 const UPDATE_BARS = 'UPDATE_BARS';
 
 // Action creators
-export const updateBars = (nums, bars, initialHeights) => {
+export const updateBars = (nums, displayBars, initialHeights) => {
   return {
     type: UPDATE_BARS,
     payload: {
       nums,
-      bars,
+      displayBars,
       initialHeights,
     },
   };
@@ -17,23 +17,19 @@ export const updateBars = (nums, bars, initialHeights) => {
 
 const initialState = {
   nums: [],
-  bars: [],
+  displayBars: [],
   initialHeights: [],
 };
 
-const reducer = (state = initialState, { type, payload }) => {
+export const barsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case UPDATE_BARS:
       return {
         nums: payload.nums,
-        bars: payload.bars,
+        displayBars: payload.displayBars,
         initialHeights: payload.initialHeights,
       };
     default:
       return state;
   }
 };
-
-const store = createStore(reducer);
-
-export default store;
