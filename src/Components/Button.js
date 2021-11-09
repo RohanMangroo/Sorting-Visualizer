@@ -1,14 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateActive } from '../store/buttonSelectionReducer';
+import bubbleSort from '../Algorithms/bubbleSort';
 
-function Button({ name, type, update, selectedButton, active }) {
+function Button(props) {
+  const { type, name } = props;
   const container = `btn-container ${type}-container`;
   const btnType = `btn ${type}`;
 
   function handleClick() {
-    active ? update(false) : update(true);
-    console.log(active);
+    const { update, active, nums, bars } = props;
+    if (!active) {
+      bubbleSort(nums, bars);
+      update(true);
+    } else {
+      window.location.reload();
+      update(false);
+    }
   }
 
   return (
@@ -20,8 +28,10 @@ function Button({ name, type, update, selectedButton, active }) {
   );
 }
 
-const mapStateToProps = ({ buttonSelection }) => {
+const mapStateToProps = ({ bars, buttonSelection }) => {
   return {
+    nums: bars.nums,
+    bars: bars.displayBars,
     selectedButton: buttonSelection.buttonSelection,
     active: buttonSelection.active,
   };
