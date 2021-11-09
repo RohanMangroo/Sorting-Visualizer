@@ -1,6 +1,4 @@
-import { createStore } from 'redux';
-
-// Type constants
+// Action Type
 const UPDATE_BARS = 'UPDATE_BARS';
 
 // Action creators
@@ -21,7 +19,7 @@ const initialState = {
   initialHeights: [],
 };
 
-export const barsReducer = (state = initialState, { type, payload }) => {
+const barsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case UPDATE_BARS:
       return {
@@ -33,3 +31,5 @@ export const barsReducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
+export default barsReducer;

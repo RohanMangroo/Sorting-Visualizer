@@ -1,20 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import bubbleSort from '../Algorithms/bubbleSort';
+import { updateButtonSelection } from '../store/buttonSelectionReducer';
 
-function Controls({ nums, bars }) {
+function Controls({ update, button }) {
+  function handleClick(e) {
+    update(e.target.value);
+  }
+
   return (
     <div className="controls-container">
       <div className="algo-buttons-container">
-        <div className="algo-buttons">
-          <button className="active-btn" onClick={() => bubbleSort(nums, bars)}>
-            BUBBLE
-          </button>
-          <button>SELECTION</button>
-          <button>INSERTION</button>
-          <button>QUICK</button>
-          <button>MERGE</button>
-          <button>HEAP</button>
+        <div className="algo-buttons" onClick={(e) => handleClick(e)}>
+          <button value="bubbleSort">BUBBLE</button>
+          <button value="selectionSort">SELECTION</button>
+          <button value="insertionSort">INSERTION</button>
+          <button value="quickSort">QUICK</button>
+          <button value="mergeSort">MERGE</button>
+          <button value="heapSort">HEAP</button>
         </div>
       </div>
       <div className="sliders">
@@ -41,11 +43,18 @@ function Controls({ nums, bars }) {
   );
 }
 
-const mapStateToProps = ({ bars }) => {
+const mapStateToProps = ({ buttonSelection }) => {
   return {
-    nums: bars.nums,
-    bars: bars.displayBars,
+    button: buttonSelection,
   };
 };
 
-export default connect(mapStateToProps, null)(Controls);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    update: (button) => {
+      return dispatch(updateButtonSelection(button));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Controls);
