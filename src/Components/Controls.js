@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateButtonSelection } from '../store/buttonSelectionReducer';
 
-function Controls({ update, button }) {
+function Controls({ update }) {
   function handleClick(e) {
     update(e.target.value);
   }
@@ -43,12 +43,6 @@ function Controls({ update, button }) {
   );
 }
 
-const mapStateToProps = ({ buttonSelection }) => {
-  return {
-    button: buttonSelection,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     update: (button) => {
@@ -57,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Controls);
+export default connect(null, mapDispatchToProps)(Controls);
