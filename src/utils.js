@@ -2,8 +2,8 @@ export function genArray(value, containerHeight) {
   const arrayOfNums = [];
   const arrayOfHeights = [];
   for (let i = 0; i < value; i++) {
-    const randomNum = genRandomNum(5, 450);
-    const heightPercentage = (randomNum / containerHeight) * 100;
+    const randomNum = genRandomNum(5, containerHeight);
+    const heightPercentage = Math.floor((randomNum / containerHeight) * 100);
     arrayOfNums.push(randomNum);
     arrayOfHeights.push(heightPercentage);
   }
