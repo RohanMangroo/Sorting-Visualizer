@@ -19,12 +19,12 @@
   --start-btn-font-size: calc(var(--start-btn-width) / 7);
 
   /*Stop*/
-  --stop-btn-container-height: calc(var(--page-child-height-bottom) / 4);
+  /* --stop-btn-container-height: calc(var(--page-child-height-bottom) / 4);
   --stop-btn-container-width: calc(var(--page-bottom-mid-width) / 4);
 
   --stop-btn-width: calc(var(--stop-btn-container-width) / 1.5);
   --stop-btn-height: calc(var(--stop-btn-container-height) / 2);
-  --stop-btn-font-size: calc(var(--stop-btn-container-width) / 7);
+  --stop-btn-font-size: calc(var(--stop-btn-container-width) / 7); */
 }
 
 /*Button*/
@@ -54,7 +54,6 @@
 }
 
 .start-btn {
-  /* padding: var(--start-btn-padding); */
   height: var(--start-btn-height);
   width: var(--start-btn-width);
   background-color: var(--green);
@@ -66,8 +65,26 @@
   color: var(--green-accent);
 }
 
-/*Stop Button*/
 .stop-btn-container {
+  height: var(--start-btn-container-height);
+  width: var(--start-btn-container-width);
+  box-shadow: none;
+  background-color: var(--red-accent);
+}
+
+.stop-btn {
+  height: var(--start-btn-height);
+  width: var(--start-btn-width);
+  font-size: var(--start-btn-font-size);
+  background-color: var(--red);
+}
+
+.stop-btn:active {
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+  color: var(--red-accent);
+}
+/*Stop Button*/
+/* .stop-btn-container {
   height: var(--stop-btn-container-height);
   width: var(--stop-btn-container-width);
   background-color: var(--red-accent);
@@ -83,4 +100,4 @@
 .stop-btn:active {
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
   color: var(--red-accent);
-}
+} */
