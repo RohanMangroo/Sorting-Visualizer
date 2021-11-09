@@ -22,7 +22,7 @@ export const updateActive = (boolean) => {
 };
 
 const initialState = {
-  buttonSelection: null,
+  buttonSelection: 'bubbleSort',
   active: false,
 };
 

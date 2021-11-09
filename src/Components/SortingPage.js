@@ -1,6 +1,6 @@
 import Controls from './Controls';
 import Bars from './Bars';
-import Button from './Button';
+import StartButton from './StartButton';
 import Metrics from './Metrics';
 
 export default function SortingPage() {
@@ -19,7 +19,7 @@ export default function SortingPage() {
           <Controls />
         </div>
         <div className="page-bottom-mid">
-          <Button />
+          <StartButton />
         </div>
         <div className="page-bottom-right">
           <Metrics />

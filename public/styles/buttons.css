@@ -83,21 +83,3 @@
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
   color: var(--red-accent);
 }
-/*Stop Button*/
-/* .stop-btn-container {
-  height: var(--stop-btn-container-height);
-  width: var(--stop-btn-container-width);
-  background-color: var(--red-accent);
-}
-
-.stop-btn {
-  background-color: var(--red);
-  height: var(--stop-btn-height);
-  width: var(--stop-btn-width);
-  font-size: var(--stop-btn-font-size);
-}
-
-.stop-btn:active {
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
-  color: var(--red-accent);
-} */

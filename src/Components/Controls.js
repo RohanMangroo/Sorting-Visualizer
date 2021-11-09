@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateButtonSelection } from '../store/buttonSelectionReducer';
 
-function Controls({ update }) {
+function Controls({ update, selectedButton }) {
   function handleClick(e) {
     update(e.target.value);
   }
@@ -11,12 +11,42 @@ function Controls({ update }) {
     <div className="controls-container">
       <div className="algo-buttons-container">
         <div className="algo-buttons" onClick={(e) => handleClick(e)}>
-          <button value="bubbleSort">BUBBLE</button>
-          <button value="selectionSort">SELECTION</button>
-          <button value="insertionSort">INSERTION</button>
-          <button value="quickSort">QUICK</button>
-          <button value="mergeSort">MERGE</button>
-          <button value="heapSort">HEAP</button>
+          <button
+            value="bubbleSort"
+            className={selectedButton === 'bubbleSort' ? 'active-btn' : ''}
+          >
+            BUBBLE
+          </button>
+          <button
+            value="selectionSort"
+            className={selectedButton === 'selectionSort' ? 'active-btn' : ''}
+          >
+            SELECTION
+          </button>
+          <button
+            value="insertionSort"
+            className={selectedButton === 'insertionSort' ? 'active-btn' : ''}
+          >
+            INSERTION
+          </button>
+          <button
+            value="quickSort"
+            className={selectedButton === 'quickSort' ? 'active-btn' : ''}
+          >
+            QUICK
+          </button>
+          <button
+            value="mergeSort"
+            className={selectedButton === 'mergeSort' ? 'active-btn' : ''}
+          >
+            MERGE
+          </button>
+          <button
+            value="heapSort"
+            className={selectedButton === 'heapSort' ? 'active-btn' : ''}
+          >
+            HEAP
+          </button>
         </div>
       </div>
       <div className="sliders">
@@ -43,6 +73,12 @@ function Controls({ update }) {
   );
 }
 
+const mapStateToProps = ({ buttonSelection }) => {
+  return {
+    selectedButton: buttonSelection.buttonSelection,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     update: (button) => {
@@ -51,4 +87,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Controls);
+export default connect(mapStateToProps, mapDispatchToProps)(Controls);

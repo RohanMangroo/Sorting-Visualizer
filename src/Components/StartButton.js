@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { updateActive } from '../store/buttonSelectionReducer';
 import bubbleSort from '../Algorithms/bubbleSort';
 
-function Button(props) {
+function StartButton(props) {
   const [button, setButton] = useState({
     btnName: 'START',
     btnType: 'start-btn',
@@ -12,7 +12,7 @@ function Button(props) {
   //
 
   function handleClick() {
-    const { update, active, nums, bars } = props;
+    const { update, active, nums, bars, selectedButton } = props;
 
     //Inactive means the button says 'START', and needs to be pressed to be active
     if (!active) {
@@ -21,7 +21,8 @@ function Button(props) {
         btnType: 'stop-btn',
         btnContainer: 'stop-btn-container',
       });
-      bubbleSort(nums, bars);
+
+      startSelectedAlgo(selectedButton, nums, bars);
       update(true);
       //Active means the button says 'STOP'
     } else {
@@ -61,4 +62,13 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Button);
+export default connect(mapStateToProps, mapDispatchToProps)(StartButton);
+
+function startSelectedAlgo(selectedAlgo, nums, bars) {
+  switch (selectedAlgo) {
+    case 'bubbleSort':
+      return bubbleSort(nums, bars);
+    default:
+      return;
+  }
+}
