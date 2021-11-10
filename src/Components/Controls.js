@@ -1,16 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateButtonSelection } from '../store/buttonSelectionReducer';
+import { updateAlgoButtonSelection } from '../store/buttonSelectionReducer';
 import { updateBarCount } from '../store/barsReducer';
 
-function Controls({ updateButton, selectedButton, updateBars, barCount }) {
+//================================================================================================================//
+function Controls({
+  updateAlgoButtonSelection_,
+  updateBarCount_,
+  selectedButton,
+}) {
+  //This handle click function uses event delegation to update which algorithm button has been clicked. The value passed is a string of the algorithm name
   function handleButtonClick(e) {
-    updateButton(e.target.value);
+    updateAlgoButtonSelection_(e.target.value);
   }
 
+  //This handle change function takes the value of the slider and updates the barCount
   function handleBarSlider(name) {
-    updateBars(name.target.value);
+    updateBarCount_(name.target.value);
   }
+  //================================================================================================================//
+  //When an algorithm button is clicked this component will re-render with the color blue. This is based on the 'selectedButton' variable(which is a part of Redux state)
+  //Maybe I could find a way so the whole component doesn't re-render and just the current button and previous buttons are affected???
   return (
     <div className="controls-container">
       <div className="algo-buttons-container">
@@ -77,20 +87,19 @@ function Controls({ updateButton, selectedButton, updateBars, barCount }) {
     </div>
   );
 }
-
+//================================================================================================================//
 const mapStateToProps = ({ buttonSelection, bars }) => {
   return {
     selectedButton: buttonSelection.buttonSelection,
-    barCount: bars.barCount,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateButton: (button) => {
-      return dispatch(updateButtonSelection(button));
+    updateAlgoButtonSelection_: (button) => {
+      return dispatch(updateAlgoButtonSelection(button));
     },
-    updateBars: (value) => {
+    updateBarCount_: (value) => {
       return dispatch(updateBarCount(value));
     },
   };

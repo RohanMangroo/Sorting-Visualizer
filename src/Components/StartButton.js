@@ -1,74 +1,53 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { updateActive } from '../store/buttonSelectionReducer';
-import bubbleSort from '../Algorithms/bubbleSort';
+import { startSelectedAlgo } from '../utils';
 
-function StartButton(props) {
+//================================================================================================================//
+function StartButton({ nums, bars, selectedButton }) {
+  //Local state used to determine which button(START or STOP is being shown)
   const [button, setButton] = useState({
     btnName: 'START',
     btnType: 'start-btn',
-    btnContainer: 'start-btn-container',
   });
-  //
 
+  //When the button is clicked...
   function handleClick() {
-    const { update, active, nums, bars, selectedButton } = props;
-
-    //Inactive means the button says 'START', and needs to be pressed to be active
-    if (!active) {
-      setButton({
-        btnName: 'STOP',
-        btnType: 'stop-btn',
-        btnContainer: 'stop-btn-container',
-      });
-
+    if (button.btnName === 'START') {
+      showButton(setButton, 'STOP', 'stop-btn');
+      //Passing these props to a util function to start the chosen algorithm
       startSelectedAlgo(selectedButton, nums, bars);
-      update(true);
-      //Active means the button says 'STOP'
     } else {
-      setButton({
-        btnName: 'START',
-        btnType: 'start-btn',
-        btnContainer: 'start-btn-container',
-      });
+      showButton(setButton, 'START', 'start-btn');
+      //Maybe a better option for stoping???
       window.location.reload();
-      update(false);
     }
   }
-
+  //================================================================================================================//
   return (
-    <div className={`${button.btnContainer} btn-container`}>
+    <div className={`${button.btnType}-container btn-container`}>
       <button className={`btn ${button.btnType}`} onClick={() => handleClick()}>
         {button.btnName}
       </button>
     </div>
   );
 }
-
+//================================================================================================================//
 const mapStateToProps = ({ bars, buttonSelection }) => {
   return {
     nums: bars.nums,
     bars: bars.displayBars,
     selectedButton: buttonSelection.buttonSelection,
-    active: buttonSelection.active,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    update: (boolean) => {
-      return dispatch(updateActive(boolean));
-    },
-  };
-};
+export default connect(mapStateToProps, null)(StartButton);
 
-export default connect(mapStateToProps, mapDispatchToProps)(StartButton);
+//================================================================================================================//
 
-function startSelectedAlgo(selectedAlgo, nums, bars) {
-  switch (selectedAlgo) {
-    case 'bubbleSort':
-      return bubbleSort(nums, bars);
-    default:
-      return;
-  }
+//Small function to show the START/STOP button
+function showButton(func, name, type) {
+  return func({
+    btnName: name,
+    btnType: type,
+  });
 }

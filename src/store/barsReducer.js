@@ -13,7 +13,7 @@ export const updateBars = (nums, displayBars, initialHeights) => {
     },
   };
 };
-
+//This Redux function is used by the sliders to update the barCount. The barCount prop is attached to the Bars component, so if ever barCount is updated, the Bars component wil re render
 export const updateBarCount = (barCount) => {
   return {
     type: UPDATE_BAR_COUNT,
