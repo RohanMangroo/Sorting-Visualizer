@@ -34,12 +34,11 @@ export function startSelectedAlgo(selectedAlgo, nums, bars) {
   }
 }
 
-export async function swapBarHeights(barOnePos, barTwoPos, bars, speed) {
+export function swapBarHeights(barOnePos, barTwoPos, bars, speed) {
   const heightOne = bars[barOnePos].style.height;
   const heightTwo = bars[barTwoPos].style.height;
   bars[barOnePos].style.height = heightTwo;
   bars[barTwoPos].style.height = heightOne;
-  await pause(speed);
 }
 
 export async function colorBars(arrayOfPos, color, bars, speed) {
@@ -64,10 +63,8 @@ export async function pause(speed) {
 
 //Colors
 export const colors = {
-  sorted: '#477fd3',
-  blue: '#5891e7',
-  green: '#2a7221',
-  red: '#fe7d7d',
-  yellow_orange: '#ffcb77',
-  purple: '#b060e7',
+  sorted: '#1c77c3',
+  green: '#a2dfba',
+  orange: '#ffdab7',
+  red: '#e67188',
 };
