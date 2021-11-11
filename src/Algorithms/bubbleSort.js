@@ -27,9 +27,9 @@ export default async function bubbleSort(array, bars) {
         await colorBars([j, j + 1], colors.green, bars, speed * 4);
       }
       //After we process the first position we need to put it's color back to white to simulate the feeling of movement
-      colorBars([j], 'white', bars, 0);
+      colorBars([j], 'white', bars);
     }
-    //Once we reach the end we'll color the bar purple
+    //Once we reach the end we'll color the bar
     colorBars([stopPos], colors.sorted, bars);
     stopPos -= 1;
   }
