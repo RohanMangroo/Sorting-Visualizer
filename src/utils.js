@@ -1,6 +1,9 @@
 import bubbleSort from './Algorithms/bubbleSort';
 import selectionSort from './Algorithms/selectionSort';
 import insertionSort from './Algorithms/insertionSort';
+import quickSort from './Algorithms/quickSort';
+import mergeSort from './Algorithms/mergeSort';
+import heapSort from './Algorithms/heapSort';
 
 //This function is used to generate random numbers to be sorted by the algorithm and the heights that will be used in the display of the bars on screen
 export function genArray(value, containerHeight) {
@@ -32,6 +35,12 @@ export function startSelectedAlgo(selectedAlgo, nums, bars) {
       return selectionSort(nums, bars);
     case 'insertionSort':
       return insertionSort(nums, bars);
+    case 'quickSort':
+      return quickSort(nums, bars);
+    case 'mergeSort':
+      return mergeSort(nums, bars);
+    case 'heapSort':
+      return heapSort(nums, bars);
     default:
       return;
   }
@@ -42,6 +51,15 @@ export function swapBarHeights(barOnePos, barTwoPos, bars) {
   const heightTwo = bars[barTwoPos].style.height;
   bars[barOnePos].style.height = heightTwo;
   bars[barTwoPos].style.height = heightOne;
+}
+
+export function updateBarHeight(
+  oldBarHeightPos,
+  newBarHeightPos,
+  bars,
+  auxBars
+) {
+  bars[oldBarHeightPos].style.height = auxBars[newBarHeightPos].style.height;
 }
 
 export async function colorBars(arrayOfPos, color, bars, speed = 0) {

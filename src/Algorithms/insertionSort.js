@@ -7,7 +7,7 @@ export default async function insertionSort(array, bars) {
 
   for (let i = 1; i < array.length; i++) {
     let j = i;
-    await colorBars([j - 1], colors.sorted, bars, speed);
+    colorBars([j - 1], colors.sorted, bars, speed);
     while (array[j] < array[j - 1] && j > 0) {
       await colorBars([j], colors.red, bars, speed);
       swapNums(j, j - 1, array);
