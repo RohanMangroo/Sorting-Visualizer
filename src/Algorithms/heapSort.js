@@ -59,13 +59,13 @@ async function siftDown(position, lastIndexOfHeap, array, bars, speed) {
       position = indexToSwap;
       leftChild = position * 2 + 1;
       colorBars([indexToSwap], 'white', bars);
-      await colorBars([position], colors.orange, bars, speed);
+      // await colorBars([position], colors.orange, bars, speed);
     } else {
       await colorBars([position, indexToSwap], 'white', bars, speed);
       return;
     }
   }
-  colorBars([position], colors.red, bars);
+  colorBars([position], 'white', bars);
 }
 
 async function swap(positionOne, positionTwo, array, bars) {
