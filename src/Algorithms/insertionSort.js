@@ -1,7 +1,6 @@
 import { colorBars, swapNums, swapBarHeights, colors } from '../utils';
 
-const speed = 25;
-export default async function insertionSort(array, bars) {
+export default async function insertionSort(array, bars, speed) {
   //The bars grabbed from the DOM are 'array-like' and not an actual array so we need to convert it to an array by calling Array.from
   bars = Array.from(bars);
 

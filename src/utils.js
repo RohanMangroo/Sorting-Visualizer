@@ -3,6 +3,7 @@ import selectionSort from './Algorithms/selectionSort';
 import insertionSort from './Algorithms/insertionSort';
 import quickSort from './Algorithms/quickSort';
 import mergeSort from './Algorithms/mergeSort';
+// import mergeSortXXX from './Algorithms/mergeSortXXX';
 import heapSort from './Algorithms/heapSort';
 
 //This function is used to generate random numbers to be sorted by the algorithm and the heights that will be used in the display of the bars on screen
@@ -27,20 +28,26 @@ export function genRandomNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export function startSelectedAlgo(selectedAlgo, nums, bars) {
+export function startSelectedAlgo(
+  selectedAlgo,
+  nums,
+  bars,
+  speed,
+  initialHeights
+) {
   switch (selectedAlgo) {
     case 'bubbleSort':
-      return bubbleSort(nums, bars);
+      return bubbleSort(nums, bars, speed);
     case 'selectionSort':
-      return selectionSort(nums, bars);
+      return selectionSort(nums, bars, speed);
     case 'insertionSort':
-      return insertionSort(nums, bars);
+      return insertionSort(nums, bars, speed);
     case 'quickSort':
-      return quickSort(nums, bars);
+      return quickSort(nums, bars, speed);
     case 'mergeSort':
-      return mergeSort(nums, bars);
+      return mergeSort(nums, bars, speed, initialHeights);
     case 'heapSort':
-      return heapSort(nums, bars);
+      return heapSort(nums, bars, speed);
     default:
       return;
   }
@@ -53,13 +60,20 @@ export function swapBarHeights(barOnePos, barTwoPos, bars) {
   bars[barTwoPos].style.height = heightOne;
 }
 
-export function updateBarHeight(
-  oldBarHeightPos,
-  newBarHeightPos,
-  bars,
-  auxBars
-) {
-  bars[oldBarHeightPos].style.height = auxBars[newBarHeightPos].style.height;
+// export async function updateBarHeight(
+//   oldBarHeightPos,
+//   newBarHeightPos,
+//   bars,
+//   speed
+// ) {
+//   bars[oldBarHeightPos].style.height = bars[newBarHeightPos].style.height;
+//   await pause(speed);
+// }
+export async function displaySort(start, stop, bars, heights, speed) {
+  for (let i = start; i <= stop; i++) {
+    bars[i].style.height = `${heights[i]}%`;
+    await pause(10);
+  }
 }
 
 export async function colorBars(arrayOfPos, color, bars, speed = 0) {

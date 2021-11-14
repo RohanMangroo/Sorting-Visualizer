@@ -1,9 +1,7 @@
 import { colorBars, swapNums, swapBarHeights, colors } from '../utils';
 
-const speed = 0;
-
 //=================================================================//
-export default async function heapSort(array, bars) {
+export default async function heapSort(array, bars, speed) {
   //The bars grabbed from the DOM are 'array-like' and not an actual array so we need to convert it to an array by calling Array.from
   bars = Array.from(bars);
 

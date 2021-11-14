@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateAlgoButtonSelection } from '../store/buttonSelectionReducer';
-import { updateBarCount } from '../store/barsReducer';
+import { updateBarCount, updateSpeed } from '../store/barsReducer';
 
 //================================================================================================================//
 function Controls({
   updateAlgoButtonSelection_,
   updateBarCount_,
+  updateSpeed_,
   selectedButton,
 }) {
   //This handle click function uses event delegation to update which algorithm button has been clicked. The value passed is a string of the algorithm name
@@ -17,6 +18,11 @@ function Controls({
   //This handle change function takes the value of the slider and updates the barCount
   function handleBarSlider(name) {
     updateBarCount_(name.target.value);
+  }
+
+  //This handle change function takes the value of the slider and updates the speed
+  function handleSpeed(name) {
+    updateSpeed_(name.target.value);
   }
   //================================================================================================================//
   //When an algorithm button is clicked this component will re-render with the color blue. This is based on the 'selectedButton' variable(which is a part of Redux state)
@@ -77,11 +83,12 @@ function Controls({
         <input
           type="range"
           name="speed"
-          defaultValue="200"
+          defaultValue="100"
           min="20"
-          max="400"
-          step="0"
+          max="300"
+          step="1"
           className="slider"
+          onChange={(name) => handleSpeed(name)}
         />
       </div>
     </div>
@@ -101,6 +108,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateBarCount_: (value) => {
       return dispatch(updateBarCount(value));
+    },
+    updateSpeed_: (value) => {
+      return dispatch(updateSpeed(value));
     },
   };
 };
