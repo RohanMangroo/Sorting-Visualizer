@@ -34,7 +34,7 @@ export default async function bubbleSort(array, bars, speed, setButton) {
   }
 
   setButton({
-    btnName: 'START',
-    btnType: 'start-btn',
+    btnName: 'NEW',
+    btnType: 'new-array-btn',
   });
 }

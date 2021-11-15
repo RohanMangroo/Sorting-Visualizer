@@ -84,7 +84,7 @@ function Controls({
           disabled={active ? true : false}
           defaultValue="100"
           min="5"
-          max="1000"
+          max="400"
           step="1"
           className="slider"
           onChange={(name) => handleBarSlider(name)}
