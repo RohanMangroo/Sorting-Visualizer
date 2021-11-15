@@ -2,7 +2,6 @@
 const UPDATE_BARS = 'UPDATE_BARS';
 const UPDATE_BAR_COUNT = 'UPDATE_BAR_COUNT';
 const UPDATE_SPEED = 'UPDATE_SPEED';
-// const UPDATE_NUMS = 'UPDATE_NUMS';
 
 // Action creators
 export const updateBars = (nums, displayBars, initialHeights) => {
@@ -34,15 +33,6 @@ export const updateSpeed = (speed) => {
   };
 };
 
-// export const updateNums = (nums) => {
-//   return {
-//     type: UPDATE_NUMS,
-//     payload: {
-//       nums,
-//     },
-//   };
-// };
-
 const initialState = {
   nums: [],
   displayBars: [],
@@ -70,11 +60,6 @@ const barsReducer = (state = initialState, { type, payload }) => {
         ...state,
         speed: payload.speed,
       };
-    // case UPDATE_NUMS:
-    //   return {
-    //     ...state,
-    //     nums: payload.nums,
-    //   };
     default:
       return state;
   }

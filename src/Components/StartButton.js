@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { startSelectedAlgo } from '../utils';
-// import { updateNums } from '../store/barsReducer';
+import { updateActive } from '../store/buttonSelectionReducer';
 
 //================================================================================================================//
-function StartButton({ nums, bars, speed, selectedButton, initialHeights }) {
-  //Local state used to determine which button(START or STOP is being shown)
+function StartButton({
+  nums,
+  bars,
+  spd,
+  selctdBtn,
+  initHths,
+  active,
+  updateActive_,
+}) {
   const [button, setButton] = useState({
     btnName: 'START',
     btnType: 'start-btn',
@@ -13,12 +20,22 @@ function StartButton({ nums, bars, speed, selectedButton, initialHeights }) {
 
   //When the button is clicked...
   function handleClick() {
-    if (button.btnName === 'START') {
-      showButton(setButton, 'STOP', 'stop-btn');
+    if (!active) {
+      setButton({
+        btnName: 'STOP',
+        btnType: 'stop-btn',
+      });
+
+      updateActive_(true);
       //Passing these props to a util function to start the chosen algorithm
-      startSelectedAlgo(selectedButton, nums, bars, speed, initialHeights);
+      startSelectedAlgo(selctdBtn, nums, bars, spd, initHths);
     } else {
-      showButton(setButton, 'START', 'start-btn');
+      setButton({
+        btnName: 'START',
+        btnType: 'start-btn',
+      });
+
+      updateActive_(false);
       //Maybe a better option for stoping???
       window.location.reload();
     }
@@ -37,26 +54,27 @@ const mapStateToProps = ({ bars, buttonSelection }) => {
   return {
     nums: bars.nums,
     bars: bars.displayBars,
-    initialHeights: bars.initialHeights,
-    speed: bars.speed,
-    selectedButton: buttonSelection.buttonSelection,
+    initHths: bars.initialHeights,
+    spd: bars.speed,
+    selctdBtn: buttonSelection.buttonSelection,
+    active: buttonSelection.active,
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     updateNums_: (nums) => {
-//       return dispatch(updateNums(nums));
-//     },
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateActive_: (bool) => {
+      return dispatch(updateActive(bool));
+    },
+  };
+};
 
-export default connect(mapStateToProps, null)(StartButton);
+export default connect(mapStateToProps, mapDispatchToProps)(StartButton);
 
 //================================================================================================================//
 
 //Small function to show the START/STOP button
-function showButton(func, name, type) {
+export function showButton(func, name, type) {
   return func({
     btnName: name,
     btnType: type,

@@ -32,7 +32,7 @@
 }
 
 .algo-buttons-container {
-  background-color: var(--secondary);
+  background-color: lightgray;
   border-radius: 10px;
   height: var(--algo-button-container-height);
   width: var(--algo-buttons-container-width);
@@ -53,30 +53,27 @@
   align-content: space-evenly;
 }
 
-.algo-buttons > button {
+.algo-btn {
   border-style: none;
   border-radius: 10px;
   height: var(--button-height);
   width: var(--button-width);
   font-size: var(--button-font-size);
   margin-right: var(--space);
-  background-color: var(--button-inactive-bg-color);
+  background-color: var(--green);
   color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.algo-buttons > button:active {
-  box-shadow: none;
+.disable-btn {
+  background-color: rgb(187, 187, 187);
 }
-
-.algo-buttons .active-btn {
-  background-color: var(--primary);
-  color: white;
-  box-shadow: none;
+.active-btn {
+  background-color: rgb(235, 235, 92);
+  color: black;
 }
 
 .sliders {
-  background-color: var(--secondary);
+  background-color: lightgray;
   border-radius: 10px;
   height: var(--controls-container-height);
   width: var(--sliders-container-width);
@@ -103,6 +100,22 @@
   cursor: pointer;
 }
 
+.slider:disabled {
+  -webkit-appearance: none;
+  width: 75%;
+  height: 15%;
+  border-radius: 10px;
+  background-color: rgb(250, 250, 250);
+}
+
+.slider:disabled::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: var(--sliders-thumb-width);
+  height: var(--sliders-thumb-width);
+  border-radius: 50%;
+  background: rgb(195, 195, 195);
+  cursor: pointer;
+}
 /* .slidecontainer {
   width: 100%;
 } */

@@ -9,6 +9,7 @@ function Controls({
   updateBarCount_,
   updateSpeed_,
   selectedButton,
+  active,
 }) {
   //This handle click function uses event delegation to update which algorithm button has been clicked. The value passed is a string of the algorithm name
   function handleButtonClick(e) {
@@ -24,6 +25,7 @@ function Controls({
   function handleSpeed(name) {
     updateSpeed_(name.target.value);
   }
+
   //================================================================================================================//
   //When an algorithm button is clicked this component will re-render with the color blue. This is based on the 'selectedButton' variable(which is a part of Redux state)
   //Maybe I could find a way so the whole component doesn't re-render and just the current button and previous buttons are affected???
@@ -33,37 +35,43 @@ function Controls({
         <div className="algo-buttons" onClick={(e) => handleButtonClick(e)}>
           <button
             value="bubbleSort"
-            className={selectedButton === 'bubbleSort' ? 'active-btn' : ''}
+            disabled={active ? true : false}
+            className={getClassName(selectedButton, 'bubbleSort', active)}
           >
             BUBBLE
           </button>
           <button
             value="selectionSort"
-            className={selectedButton === 'selectionSort' ? 'active-btn' : ''}
+            disabled={active ? true : false}
+            className={getClassName(selectedButton, 'selectionSort', active)}
           >
             SELECTION
           </button>
           <button
             value="insertionSort"
-            className={selectedButton === 'insertionSort' ? 'active-btn' : ''}
+            disabled={active ? true : false}
+            className={getClassName(selectedButton, 'insertionSort', active)}
           >
             INSERTION
           </button>
           <button
             value="quickSort"
-            className={selectedButton === 'quickSort' ? 'active-btn' : ''}
+            disabled={active ? true : false}
+            className={getClassName(selectedButton, 'quickSort', active)}
           >
             QUICK
           </button>
           <button
             value="mergeSort"
-            className={selectedButton === 'mergeSort' ? 'active-btn' : ''}
+            disabled={active ? true : false}
+            className={getClassName(selectedButton, 'mergeSort', active)}
           >
             MERGE
           </button>
           <button
             value="heapSort"
-            className={selectedButton === 'heapSort' ? 'active-btn' : ''}
+            disabled={active ? true : false}
+            className={getClassName(selectedButton, 'heapSort', active)}
           >
             HEAP
           </button>
@@ -73,9 +81,10 @@ function Controls({
         <input
           type="range"
           name="bars"
+          disabled={active ? true : false}
           defaultValue="100"
           min="5"
-          max="200"
+          max="1000"
           step="1"
           className="slider"
           onChange={(name) => handleBarSlider(name)}
@@ -83,6 +92,7 @@ function Controls({
         <input
           type="range"
           name="speed"
+          disabled={active ? true : false}
           defaultValue="100"
           min="20"
           max="300"
@@ -98,6 +108,7 @@ function Controls({
 const mapStateToProps = ({ buttonSelection, bars }) => {
   return {
     selectedButton: buttonSelection.buttonSelection,
+    active: buttonSelection.active,
   };
 };
 
@@ -116,3 +127,13 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);
+
+function getClassName(selectedButton, buttonName, active) {
+  const className =
+    selectedButton === buttonName
+      ? 'algo-btn active-btn'
+      : active
+      ? 'algo-btn disable-btn'
+      : 'algo-btn algo-green';
+  return className;
+}

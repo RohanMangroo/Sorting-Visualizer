@@ -21,9 +21,9 @@ export default async function mergeSort(arr, bars, speed, heights) {
     bars,
     speed
   );
-  // for (let i = 0; i < array.length; i++) {
-  //   if (i < array.length) {
-  //     await colorBars([i], colors.sorted, bars, speed, bars, updateNums_);
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (i < arr.length) {
+  //     await colorBars([i], colors.sorted, bars, speed, bars);
   //   }
   // }
 }
@@ -36,6 +36,7 @@ async function mergeHelper(srt, stp, main, aux, hgts, auxHgts, bars, spd) {
   await mergeHelper(srt, midPoint, aux, main, auxHgts, hgts, bars, spd);
   await mergeHelper(midPoint + 1, stp, aux, main, auxHgts, hgts, bars, spd);
   await merge(srt, stp, midPoint, main, aux, hgts, auxHgts, bars, spd);
+  displaySort(srt, stp, bars, hgts, spd);
 }
 
 async function merge(
@@ -59,11 +60,8 @@ async function merge(
   //midPoint is the end of the first half
   //stop is the end of the second half
 
-  //Here we are coloring the ends of the two halfs
-  // colorBars([midPoint, stop], colors.red, bars);
-
   while (i <= midPoint && j <= stop) {
-    // await colorBars([k], colors.orange, bars, speed);
+    await colorBars([k], colors.red, bars, speed);
     if (aux[i] <= aux[j]) {
       main[k] = aux[i];
       heights[k] = auxHeights[i];
@@ -73,28 +71,25 @@ async function merge(
       heights[k] = auxHeights[j];
       j++;
     }
-    // colorBars([k], 'white', bars);
+    colorBars([k], 'white', bars);
     k++;
   }
 
   while (i <= midPoint) {
-    // await colorBars([k], colors.orange, bars, speed);
+    await colorBars([k], colors.red, bars, speed);
     main[k] = aux[i];
     heights[k] = auxHeights[i];
-    // colorBars([k], 'white', bars, speed);
+    colorBars([k], 'white', bars, speed);
     i++;
     k++;
   }
 
   while (j <= stop) {
-    // await colorBars([k], colors.orange, bars, speed);
+    await colorBars([k], colors.red, bars, speed);
     main[k] = aux[j];
     heights[k] = auxHeights[j];
-    // colorBars([k], 'white', bars, speed);
+    colorBars([k], 'white', bars, speed);
     j++;
     k++;
   }
-
-  await displaySort(start, stop, bars, heights, speed);
-  // await colorBars([midPoint, stop], colors.red, bars, speed);
 }

@@ -3,7 +3,6 @@ import selectionSort from './Algorithms/selectionSort';
 import insertionSort from './Algorithms/insertionSort';
 import quickSort from './Algorithms/quickSort';
 import mergeSort from './Algorithms/mergeSort';
-// import mergeSortXXX from './Algorithms/mergeSortXXX';
 import heapSort from './Algorithms/heapSort';
 
 //This function is used to generate random numbers to be sorted by the algorithm and the heights that will be used in the display of the bars on screen
@@ -33,11 +32,12 @@ export function startSelectedAlgo(
   nums,
   bars,
   speed,
-  initialHeights
+  initialHeights,
+  setButton
 ) {
   switch (selectedAlgo) {
     case 'bubbleSort':
-      return bubbleSort(nums, bars, speed);
+      return bubbleSort(nums, bars, speed, setButton);
     case 'selectionSort':
       return selectionSort(nums, bars, speed);
     case 'insertionSort':
@@ -60,19 +60,10 @@ export function swapBarHeights(barOnePos, barTwoPos, bars) {
   bars[barTwoPos].style.height = heightOne;
 }
 
-// export async function updateBarHeight(
-//   oldBarHeightPos,
-//   newBarHeightPos,
-//   bars,
-//   speed
-// ) {
-//   bars[oldBarHeightPos].style.height = bars[newBarHeightPos].style.height;
-//   await pause(speed);
-// }
 export async function displaySort(start, stop, bars, heights, speed) {
   for (let i = start; i <= stop; i++) {
     bars[i].style.height = `${heights[i]}%`;
-    await pause(10);
+    await pause(speed / 3);
   }
 }
 
@@ -80,7 +71,7 @@ export async function colorBars(arrayOfPos, color, bars, speed = 0) {
   for (let i = 0; i < arrayOfPos.length; i++) {
     bars[arrayOfPos[i]].style.backgroundColor = color;
   }
-  await pause(speed);
+  await pause(speed / 3);
 }
 
 export function swapNums(posOne, posTwo, array) {
