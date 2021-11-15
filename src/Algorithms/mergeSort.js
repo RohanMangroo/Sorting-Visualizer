@@ -3,7 +3,7 @@ import { displaySort } from '../utils';
 
 //================================================================================================================//
 
-export default async function mergeSort(arr, bars, speed, heights) {
+export default async function mergeSort(arr, bars, speed, heights, setButton) {
   if (arr.length <= 1) return;
 
   bars = Array.from(bars);
@@ -26,6 +26,11 @@ export default async function mergeSort(arr, bars, speed, heights) {
   //     await colorBars([i], colors.sorted, bars, speed, bars);
   //   }
   // }
+
+  setButton({
+    btnName: 'NEW',
+    btnType: 'new-array-btn',
+  });
 }
 
 //================================================================================================================//
@@ -36,7 +41,7 @@ async function mergeHelper(srt, stp, main, aux, hgts, auxHgts, bars, spd) {
   await mergeHelper(srt, midPoint, aux, main, auxHgts, hgts, bars, spd);
   await mergeHelper(midPoint + 1, stp, aux, main, auxHgts, hgts, bars, spd);
   await merge(srt, stp, midPoint, main, aux, hgts, auxHgts, bars, spd);
-  displaySort(srt, stp, bars, hgts, spd);
+  await displaySort(srt, stp, bars, hgts, spd);
 }
 
 async function merge(

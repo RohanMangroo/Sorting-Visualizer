@@ -1,7 +1,7 @@
 import { colorBars, swapNums, swapBarHeights, colors } from '../utils';
 
 //=================================================================//
-export default async function heapSort(array, bars, speed) {
+export default async function heapSort(array, bars, speed, setButton) {
   //The bars grabbed from the DOM are 'array-like' and not an actual array so we need to convert it to an array by calling Array.from
   bars = Array.from(bars);
 
@@ -13,6 +13,10 @@ export default async function heapSort(array, bars, speed) {
     await siftDown(0, i - 1, array, bars, speed);
   }
   await colorBars([0], colors.sorted, bars, speed);
+  setButton({
+    btnName: 'NEW',
+    btnType: 'new-array-btn',
+  });
 }
 
 //=================================================================//

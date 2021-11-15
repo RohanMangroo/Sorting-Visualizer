@@ -1,9 +1,13 @@
 import { colorBars, swapNums, swapBarHeights, colors } from '../utils';
 
-export default async function quickSort(array, bars, speed) {
+export default async function quickSort(array, bars, speed, setButton) {
   //The bars grabbed from the DOM are 'array-like' and not an actual array so we need to convert it to an array by calling Array.from
   bars = Array.from(bars);
   await quickSortHelper(array, bars, 0, array.length - 1, speed);
+  setButton({
+    btnName: 'NEW',
+    btnType: 'new-array-btn',
+  });
 }
 
 async function quickSortHelper(array, bars, start, stop, speed) {

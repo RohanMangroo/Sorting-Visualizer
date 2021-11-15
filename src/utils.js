@@ -39,15 +39,15 @@ export function startSelectedAlgo(
     case 'bubbleSort':
       return bubbleSort(nums, bars, speed, setButton);
     case 'selectionSort':
-      return selectionSort(nums, bars, speed);
+      return selectionSort(nums, bars, speed, setButton);
     case 'insertionSort':
-      return insertionSort(nums, bars, speed);
+      return insertionSort(nums, bars, speed, setButton);
     case 'quickSort':
-      return quickSort(nums, bars, speed);
+      return quickSort(nums, bars, speed, setButton);
     case 'mergeSort':
-      return mergeSort(nums, bars, speed, initialHeights);
+      return mergeSort(nums, bars, speed, initialHeights, setButton);
     case 'heapSort':
-      return heapSort(nums, bars, speed);
+      return heapSort(nums, bars, speed, setButton);
     default:
       return;
   }
