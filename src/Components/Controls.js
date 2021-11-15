@@ -10,6 +10,7 @@ function Controls({
   updateSpeed_,
   selectedButton,
   active,
+  barCount,
 }) {
   //This handle click function uses event delegation to update which algorithm button has been clicked. The value passed is a string of the algorithm name
   function handleButtonClick(e) {
@@ -82,7 +83,8 @@ function Controls({
           type="range"
           name="bars"
           disabled={active ? true : false}
-          defaultValue="100"
+          value={barCount}
+          defaultValue={barCount}
           min="5"
           max="400"
           step="1"
@@ -109,6 +111,7 @@ const mapStateToProps = ({ buttonSelection, bars }) => {
   return {
     selectedButton: buttonSelection.buttonSelection,
     active: buttonSelection.active,
+    barCount: bars.barCount,
   };
 };
 
