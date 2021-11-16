@@ -14,29 +14,33 @@ function AlgoDescription({ selectedButton }) {
 
   return (
     <div className="algo-description-container">
-      <SimpleBar className="descrip-scroll">
-        <div className="descrip-sub-container">
-          <h1 className="descrip-title">{descript.title}</h1>
-          <div className="descrip-body">
-            <div className="algo-description">
-              <h3>Algorithim Description</h3>
-              <p>{descript.algoDescript}</p>
-            </div>
-            <div className="viz-description">
-              <h3>Visualization Description</h3>
-              <p>{descript.vizDescript}</p>
-            </div>
-            <div className="complexity">
-              <h4>Complexity</h4>
-              <p>{descript.complexity}</p>
-            </div>
-            {/* <div className="learning-display">
+      {descript ? (
+        <SimpleBar className="descrip-scroll">
+          <div className="descrip-sub-container">
+            <h1 className="descrip-title">{descript.title}</h1>
+            <div className="descrip-body">
+              <div className="algo-description">
+                <h3>Algorithim Description</h3>
+                <p>{descript.algoDescript}</p>
+              </div>
+              <div className="viz-description">
+                <h3>Visualization Description</h3>
+                <p>{descript.vizDescript}</p>
+              </div>
+              <div className="complexity">
+                <h4>Complexity</h4>
+                <p>{descript.complexity}</p>
+              </div>
+              {/* <div className="learning-display">
               <h4>Learning Mode</h4>
               <p>{descript.learningMode}</p>
             </div> */}
+            </div>
           </div>
-        </div>
-      </SimpleBar>
+        </SimpleBar>
+      ) : (
+        <div>Please choose an algorithm from below</div>
+      )}
     </div>
   );
 }

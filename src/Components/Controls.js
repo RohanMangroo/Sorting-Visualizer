@@ -92,7 +92,7 @@ function Controls({
             value={barCount}
             min="5"
             max="400"
-            step="1"
+            step="5"
             className="slider"
             onChange={(name) => handleBarSlider(name)}
           />
@@ -109,7 +109,7 @@ function Controls({
             defaultValue="100"
             min="0"
             max="300"
-            step="1"
+            step="5"
             className="slider speed-slider"
             onChange={(name) => handleSpeed(name)}
           />
