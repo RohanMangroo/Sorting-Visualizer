@@ -41,7 +41,7 @@ async function mergeHelper(srt, stp, main, aux, hgts, auxHgts, bars, spd) {
   await mergeHelper(srt, midPoint, aux, main, auxHgts, hgts, bars, spd);
   await mergeHelper(midPoint + 1, stp, aux, main, auxHgts, hgts, bars, spd);
   await merge(srt, stp, midPoint, main, aux, hgts, auxHgts, bars, spd);
-  await displaySort(srt, stp, bars, hgts, spd);
+  await displaySort(srt, stp, bars, hgts, spd, colors);
 }
 
 async function merge(

@@ -2,13 +2,14 @@ import Controls from './Controls';
 import Bars from './Bars';
 import StartButton from './StartButton';
 import Metrics from './Metrics';
+import AlgoDescription from './AlgoDescription';
 
 export default function SortingPage() {
   return (
     <div className="page">
       <div className="page-top">
         <div className="page-top-left">
-          <p className="page-top-left-text"></p>
+          <AlgoDescription />
         </div>
         <div className="page-top-right">
           <Bars />

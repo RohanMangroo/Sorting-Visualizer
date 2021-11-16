@@ -84,7 +84,6 @@ function Controls({
           name="bars"
           disabled={active ? true : false}
           value={barCount}
-          defaultValue={barCount}
           min="5"
           max="400"
           step="1"

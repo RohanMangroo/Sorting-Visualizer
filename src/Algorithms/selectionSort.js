@@ -11,7 +11,7 @@ export default async function selectionSort(array, bars, speed) {
       //We will color the currentSmallest bar red
       colorBars([currentSmallest], colors.red, bars);
       //The bar who's position we are holding we color orange
-      colorBars([i], colors.orange, bars);
+      colorBars([i], colors.green, bars);
       //The scanning bars we color orange
       await colorBars([j], colors.orange, bars, speed);
       if (array[j] <= array[currentSmallest]) {

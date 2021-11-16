@@ -60,7 +60,7 @@ export function swapBarHeights(barOnePos, barTwoPos, bars) {
   bars[barTwoPos].style.height = heightOne;
 }
 
-export async function displaySort(start, stop, bars, heights, speed) {
+export async function displaySort(start, stop, bars, heights, speed, colors) {
   for (let i = start; i <= stop; i++) {
     bars[i].style.height = `${heights[i]}%`;
     await pause(speed / 3);
