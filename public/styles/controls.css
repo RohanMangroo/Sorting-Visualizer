@@ -3,7 +3,7 @@
   --page-bottom-left-width: calc(var(--width) * 3 / 5);
 
   --controls-container-height: calc(var(--page-child-height-bottom) * 4 / 5);
-  --controls-container-width: calc(var(--page-bottom-left-width) * 6.5 / 7);
+  --controls-container-width: calc(var(--page-bottom-left-width) * 6.55 / 7);
 
   --algo-button-container-height: var(--controls-container-height);
   --algo-buttons-container-width: calc(var(--controls-container-width) * 2 / 3);
@@ -19,7 +19,7 @@
   --button-inactive-bg-color: #c4c4c4;
 
   --sliders-container-width: calc(var(--controls-container-width) * 1 / 3);
-  --sliders-thumb-width: calc(var(--sliders-container-width) * 1 / 9);
+  --sliders-thumb-width: calc(var(--sliders-container-width) * 0.7 / 9);
 }
 
 .controls-container {
@@ -72,23 +72,42 @@
   color: black;
 }
 
-.sliders {
-  background-color: lightgray;
-  border-radius: 10px;
+.sliders-container {
   height: var(--controls-container-height);
   width: var(--sliders-container-width);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
+.sliders {
+  background-color: lightgray;
+  height: calc(var(--controls-container-height) / 2);
+  /* width: var(--sliders-container-width); */
+  width: var(--sliders-container-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
+.sliders > div {
+  width: calc(var(--sliders-container-width) * 0.6);
+  display: flex;
+  justify-content: space-between;
+}
+
+.sliders > div > span {
+  color: rgb(161, 1, 1);
+}
 .slider {
   -webkit-appearance: none;
   width: 75%;
-  height: 15%;
+  height: 20%;
   border-radius: 10px;
+  align-self: center;
 }
 
 .slider::-webkit-slider-thumb {
@@ -100,10 +119,17 @@
   cursor: pointer;
 }
 
+.bar-slider {
+  margin-bottom: var(--space);
+}
+
+.speed-slider {
+  direction: rtl;
+}
 .slider:disabled {
   -webkit-appearance: none;
   width: 75%;
-  height: 15%;
+  height: 20%;
   border-radius: 10px;
   background-color: rgb(250, 250, 250);
 }

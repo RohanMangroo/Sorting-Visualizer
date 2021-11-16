@@ -114,22 +114,13 @@
 .descrip-title {
   font-size: 35px;
   text-align: center;
-  background-color: var(--primary);
-  border: solid rgb(86, 86, 247);
+  background-color: var(--green);
+  /* border: solid rgb(86, 86, 247); */
   color: white;
-  margin-bottom: calc(var(--space) * 1.5);
-  /* border-radius: 10px; */
+  margin-bottom: calc(var(--space) * 3);
+  border-radius: 10px;
   font-weight: normal;
 }
-
-.descrip-body {
-}
-
-/* .algo-description {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-} */
 
 .descrip-sub-container p {
   font-size: 12px;

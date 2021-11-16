@@ -11,6 +11,7 @@ function Controls({
   selectedButton,
   active,
   barCount,
+  speed,
 }) {
   //This handle click function uses event delegation to update which algorithm button has been clicked. The value passed is a string of the algorithm name
   function handleButtonClick(e) {
@@ -78,29 +79,41 @@ function Controls({
           </button>
         </div>
       </div>
-      <div className="sliders">
-        <input
-          type="range"
-          name="bars"
-          disabled={active ? true : false}
-          value={barCount}
-          min="5"
-          max="400"
-          step="1"
-          className="slider"
-          onChange={(name) => handleBarSlider(name)}
-        />
-        <input
-          type="range"
-          name="speed"
-          disabled={active ? true : false}
-          defaultValue="100"
-          min="20"
-          max="300"
-          step="1"
-          className="slider"
-          onChange={(name) => handleSpeed(name)}
-        />
+      <div className="sliders-container">
+        <div className="sliders bar-slider">
+          <div>
+            <label>Bars</label>
+            <span>{barCount}</span>
+          </div>
+          <input
+            type="range"
+            name="bars"
+            disabled={active ? true : false}
+            value={barCount}
+            min="5"
+            max="400"
+            step="1"
+            className="slider"
+            onChange={(name) => handleBarSlider(name)}
+          />
+        </div>
+        <div className="sliders">
+          <div>
+            <label>Speed</label>
+            <span>{speed}</span>
+          </div>
+          <input
+            type="range"
+            name="speed"
+            disabled={active ? true : false}
+            defaultValue="100"
+            min="0"
+            max="300"
+            step="1"
+            className="slider speed-slider"
+            onChange={(name) => handleSpeed(name)}
+          />
+        </div>
       </div>
     </div>
   );
@@ -111,6 +124,7 @@ const mapStateToProps = ({ buttonSelection, bars }) => {
     selectedButton: buttonSelection.buttonSelection,
     active: buttonSelection.active,
     barCount: bars.barCount,
+    speed: bars.speed,
   };
 };
 
