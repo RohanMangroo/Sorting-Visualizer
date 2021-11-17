@@ -27,75 +27,20 @@ export function genRandomNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export function startSelectedAlgo(
-  selectedAlgo,
-  nums,
-  bars,
-  speed,
-  initialHeights,
-  setButton,
-  updateSwaps_,
-  updateChecks_,
-  updateRecursiveSplits_
-) {
-  switch (selectedAlgo) {
+export function startSelectedAlgo(bars, buttonSelection, updates, setButton) {
+  switch (buttonSelection.algoName) {
     case 'bubbleSort':
-      return bubbleSort(
-        nums,
-        bars,
-        speed,
-        setButton,
-        updateSwaps_,
-        updateChecks_
-      );
+      return bubbleSort(bars, updates, setButton);
     case 'selectionSort':
-      return selectionSort(
-        nums,
-        bars,
-        speed,
-        setButton,
-        updateSwaps_,
-        updateChecks_
-      );
+      return selectionSort(bars, updates, setButton);
     case 'insertionSort':
-      return insertionSort(
-        nums,
-        bars,
-        speed,
-        setButton,
-        updateSwaps_,
-        updateChecks_
-      );
+      return insertionSort(bars, updates, setButton);
     case 'quickSort':
-      return quickSort(
-        nums,
-        bars,
-        speed,
-        setButton,
-        updateSwaps_,
-        updateChecks_,
-        updateRecursiveSplits_
-      );
+      return quickSort(bars, updates, setButton);
     case 'mergeSort':
-      return mergeSort(
-        nums,
-        bars,
-        speed,
-        initialHeights,
-        setButton,
-        updateSwaps_,
-        updateChecks_,
-        updateRecursiveSplits_
-      );
+      return mergeSort(bars, updates, setButton);
     case 'heapSort':
-      return heapSort(
-        nums,
-        bars,
-        speed,
-        setButton,
-        updateSwaps_,
-        updateChecks_
-      );
+      return heapSort(bars, updates, setButton);
     default:
       return;
   }
@@ -143,3 +88,13 @@ export const colors = {
   red: '#e67188',
   blue: '#3481f5',
 };
+
+export function getClassName(selectedButton, buttonName, mainButton) {
+  const className =
+    selectedButton === buttonName
+      ? 'algo-btn active-btn'
+      : mainButton !== 'START'
+      ? 'algo-btn disable-btn'
+      : 'algo-btn algo-green';
+  return className;
+}

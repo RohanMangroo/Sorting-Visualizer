@@ -1,6 +1,6 @@
 // Type constants
 const UPDATE_ALGO_BUTTON_SELECTION = 'UPDATE_ALGO_BUTTON_SELECTION';
-const UPDATE_ACTIVE = 'UPDATE_ACTIVE';
+const UPDATE_MAIN_BUTTON = 'UPDATE_MAIN_BUTTON';
 
 // Action creators
 export const updateAlgoButtonSelection = (button) => {
@@ -12,18 +12,18 @@ export const updateAlgoButtonSelection = (button) => {
   };
 };
 
-export const updateActive = (bool) => {
+export const updateMainButton = (name) => {
   return {
-    type: UPDATE_ACTIVE,
+    type: UPDATE_MAIN_BUTTON,
     payload: {
-      active: bool,
+      name,
     },
   };
 };
 
 const initialState = {
-  buttonSelection: 'bubbleSort',
-  active: false,
+  algoName: 'bubbleSort',
+  mainButton: 'START',
 };
 
 const buttonSelectionReducer = (state = initialState, { type, payload }) => {
@@ -31,12 +31,12 @@ const buttonSelectionReducer = (state = initialState, { type, payload }) => {
     case UPDATE_ALGO_BUTTON_SELECTION:
       return {
         ...state,
-        buttonSelection: payload.button,
+        algoName: payload.button,
       };
-    case UPDATE_ACTIVE:
+    case UPDATE_MAIN_BUTTON:
       return {
         ...state,
-        active: payload.active,
+        mainButton: payload.name,
       };
     default:
       return state;

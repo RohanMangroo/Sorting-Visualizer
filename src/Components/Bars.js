@@ -6,12 +6,13 @@ import { genArray } from '../utils';
 import { v4 as uuidv4 } from 'uuid';
 
 //================================================================================================================//
-function Bars({ updateBarsInfo, initialHeights, barCount }) {
+function Bars({ updateBars_, initialHeights, barCount }) {
   const barsContainer = useRef(null);
 
   useEffect(() => {
     //We will use the container height to calculate the heights of the bars
     const containerHeight = barsContainer.current.clientHeight;
+    const displayBars = barsContainer.current.childNodes;
 
     //Here we are returning the actual numbers we are sorting(nums) and the initial heights(the initial heights will be a percentage of the container height, that way we can style the bar heights with a percentage which will allow for responsiveness)
 
@@ -20,13 +21,13 @@ function Bars({ updateBarsInfo, initialHeights, barCount }) {
 
     //This is the only component that calls genArray(), so when we do call genArray() we need to make sure we update all the neccessary info about the bars so we will have access to the most up to date info about the bars in other components.
 
-    //A Redux action creator that updates the numbers we will be sorting(nums), the actual DOM bars being shown on screen(barsContainer.current.childNodes) and the display heights(heightPercentages)
-    updateBarsInfo(nums, barsContainer.current.childNodes, heightPercentages);
-  }, [updateBarsInfo, barCount]);
+    //A Redux action creator that updates the numbers we will be sorting(nums), the actual DOM bars being shown on screen(displayBars) and the display heights(heightPercentages)
+    updateBars_(nums, displayBars, heightPercentages);
+  }, [updateBars_, barCount]);
   //================================================================================================================//
-  //initialHeights contains a number that can be used to style the bar's height based on the height of the current container. Because we are styling the bar height with a percentage, if the height of the container changes, the heights of the bars will change proportionality.
+  //initialHeights contains an arry of numbers that can be used to style the bar's height based on the height of the current container. Because we are styling the bar height with a percentage, if the height of the container changes, the heights of the bars will change proportionality.
 
-  //Because of this proportional change the bars will still have a connection to the numbers that are being sorted by the algorithm, the heights originate form these numbers
+  //Because of this proportional change the bars will still have a connection to the numbers that are being sorted by the algorithm, the heights originate from these numbers
 
   //The bars on the screen act as the visual representation of the numbers being sorted
   return (
@@ -44,7 +45,6 @@ function Bars({ updateBarsInfo, initialHeights, barCount }) {
 //================================================================================================================//
 const mapStateToProps = ({ bars }) => {
   return {
-    nums: bars.nums,
     initialHeights: bars.initialHeights,
     barCount: bars.barCount,
   };
@@ -52,7 +52,7 @@ const mapStateToProps = ({ bars }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateBarsInfo: (nums, displayBars, initialHeights) => {
+    updateBars_: (nums, displayBars, initialHeights) => {
       return dispatch(updateBars(nums, displayBars, initialHeights));
     },
   };

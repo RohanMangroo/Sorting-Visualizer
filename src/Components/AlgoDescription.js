@@ -8,8 +8,7 @@ function AlgoDescription({ selectedButton }) {
   const [descript, setDescript] = useState(descriptions.bubbleSort);
 
   useEffect(() => {
-    const description = getSelectedDescription(selectedButton, descriptions);
-    setDescript(description);
+    setDescript(getSelectedDescription(selectedButton, descriptions));
   }, [selectedButton]);
 
   return (
@@ -50,7 +49,7 @@ function getSelectedDescription(selectedButton, descriptions) {
 }
 const mapStateToProps = ({ buttonSelection }) => {
   return {
-    selectedButton: buttonSelection.buttonSelection,
+    selectedButton: buttonSelection.algoName,
   };
 };
 

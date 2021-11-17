@@ -86,21 +86,21 @@
 
 /*=============================*/
 
-.new-array-btn-container {
+.new-btn-container {
   height: var(--start-btn-container-height);
   width: var(--start-btn-container-width);
   box-shadow: none;
   background-color: rgb(194, 75, 194);
 }
 
-.new-array-btn {
+.new-btn {
   height: var(--start-btn-height);
   width: var(--start-btn-width);
   font-size: var(--start-btn-font-size);
   background-color: rgb(149, 20, 149);
 }
 
-.new-array-btn:active {
+.new-btn:active {
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
   color: rgb(149, 20, 149);
 }
