@@ -3,7 +3,24 @@ import { displaySort } from '../utils';
 
 //================================================================================================================//
 
-export default async function mergeSort(arr, bars, speed, heights, setButton) {
+export default async function mergeSort(
+  arr,
+  bars,
+  speed,
+  heights,
+  setButton,
+  updateSwaps_,
+  updateChecks_,
+  updateRecursiveSplits_
+) {
+  const metricsInfo = {
+    updateChecks_,
+    updateSwaps_,
+    updateRecursiveSplits_,
+    checks: 0,
+    swaps: 0,
+    splits: 0,
+  };
   if (arr.length <= 1) return;
 
   bars = Array.from(bars);
@@ -19,7 +36,8 @@ export default async function mergeSort(arr, bars, speed, heights, setButton) {
     heights,
     auxHeights,
     bars,
-    speed
+    speed,
+    metricsInfo
   );
   // for (let i = 0; i < arr.length; i++) {
   //   if (i < arr.length) {
@@ -35,12 +53,54 @@ export default async function mergeSort(arr, bars, speed, heights, setButton) {
 
 //================================================================================================================//
 
-async function mergeHelper(srt, stp, main, aux, hgts, auxHgts, bars, spd) {
+async function mergeHelper(
+  srt,
+  stp,
+  main,
+  aux,
+  hgts,
+  auxHgts,
+  bars,
+  spd,
+  metricsInfo
+) {
   if (srt === stp) return;
   const midPoint = Math.floor((srt + stp) / 2);
-  await mergeHelper(srt, midPoint, aux, main, auxHgts, hgts, bars, spd);
-  await mergeHelper(midPoint + 1, stp, aux, main, auxHgts, hgts, bars, spd);
-  await merge(srt, stp, midPoint, main, aux, hgts, auxHgts, bars, spd);
+  metricsInfo.updateRecursiveSplits_(++metricsInfo.splits);
+  await mergeHelper(
+    srt,
+    midPoint,
+    aux,
+    main,
+    auxHgts,
+    hgts,
+    bars,
+    spd,
+    metricsInfo
+  );
+  await mergeHelper(
+    midPoint + 1,
+    stp,
+    aux,
+    main,
+    auxHgts,
+    hgts,
+    bars,
+    spd,
+    metricsInfo
+  );
+  await merge(
+    srt,
+    stp,
+    midPoint,
+    main,
+    aux,
+    hgts,
+    auxHgts,
+    bars,
+    spd,
+    metricsInfo
+  );
   await displaySort(srt, stp, bars, hgts, spd, colors);
 }
 
@@ -53,7 +113,8 @@ async function merge(
   heights,
   auxHeights,
   bars,
-  speed
+  speed,
+  metricsInfo
 ) {
   //'k' is the position in the main array
   let k = start;
@@ -66,6 +127,7 @@ async function merge(
   //stop is the end of the second half
 
   while (i <= midPoint && j <= stop) {
+    metricsInfo.updateChecks_(++metricsInfo.checks);
     await colorBars([k], colors.red, bars, speed);
     if (aux[i] <= aux[j]) {
       main[k] = aux[i];
@@ -81,6 +143,7 @@ async function merge(
   }
 
   while (i <= midPoint) {
+    metricsInfo.updateChecks_(++metricsInfo.checks);
     await colorBars([k], colors.red, bars, speed);
     main[k] = aux[i];
     heights[k] = auxHeights[i];
@@ -90,6 +153,7 @@ async function merge(
   }
 
   while (j <= stop) {
+    metricsInfo.updateChecks_(++metricsInfo.checks);
     await colorBars([k], colors.red, bars, speed);
     main[k] = aux[j];
     heights[k] = auxHeights[j];

@@ -1,6 +1,15 @@
 import { colorBars, swapNums, swapBarHeights, colors } from '../utils';
 
-export default async function selectionSort(array, bars, speed) {
+export default async function selectionSort(
+  array,
+  bars,
+  speed,
+  setButton,
+  updateSwaps_,
+  updateChecks_
+) {
+  let swaps = 0;
+  let checks = 0;
   //The bars grabbed from the DOM are 'array-like' and not an actual array so we need to convert it to an array by calling Array.from
   bars = Array.from(bars);
 
@@ -13,6 +22,7 @@ export default async function selectionSort(array, bars, speed) {
       //The bar who's position we are holding we color orange
       colorBars([i], colors.green, bars);
       //The scanning bars we color orange
+      updateChecks_(++checks);
       await colorBars([j], colors.orange, bars, speed);
       if (array[j] <= array[currentSmallest]) {
         //If the bar that we are at is less than the current smallest bar we swap their colors
@@ -28,9 +38,15 @@ export default async function selectionSort(array, bars, speed) {
     //Once we have gone through a pass of the inner for loop we have found a currentSmallest now we will swap it with the position we are holding in the outter loop
     swapNums(i, currentSmallest, array);
     swapBarHeights(i, currentSmallest, bars);
+    updateSwaps_(++swaps);
     //We set both the i position and the currentSmallest position back to white
     colorBars([i, currentSmallest], 'white', bars);
     //We update the sorted bar to be colored
     colorBars([i], colors.sorted, bars);
   }
+
+  setButton({
+    btnName: 'NEW',
+    btnType: 'new-array-btn',
+  });
 }

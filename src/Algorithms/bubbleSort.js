@@ -5,7 +5,16 @@ import { colorBars, swapNums, swapBarHeights, colors } from '../utils';
 //The array of heights is based of of the random number AND the current height of the container
 //This way we can assign a style height of the bar in percentage, so now the bar height will always be responsive to the container height
 
-export default async function bubbleSort(array, bars, speed, setButton) {
+export default async function bubbleSort(
+  array,
+  bars,
+  speed,
+  setButton,
+  updateSwaps_,
+  updateChecks_
+) {
+  let swaps = 0;
+  let checks = 0;
   //The bars grabbed from the DOM are 'array-like' and not an actual array so we need to convert it to an array by calling Array.from
   bars = Array.from(bars);
   //A stop position used in bubbleSort to prevent the algorithm from scanning already sorted items
@@ -15,7 +24,9 @@ export default async function bubbleSort(array, bars, speed, setButton) {
     for (let j = 0; j < stopPos; j++) {
       //Coloring the current bar
       await colorBars([j], colors.red, bars, speed);
+      updateChecks_(++checks);
       if (array[j] > array[j + 1]) {
+        updateSwaps_(++swaps);
         //Here we are swapping the numbers in the array, this is a seperate array than the bars on the screen
         swapNums(j, j + 1, array);
         //If the bars are out of order, they need to be swapped so we color both red

@@ -1,16 +1,32 @@
 import { colorBars, swapNums, swapBarHeights, colors } from '../utils';
 
-export default async function quickSort(array, bars, speed, setButton) {
+export default async function quickSort(
+  array,
+  bars,
+  speed,
+  setButton,
+  updateSwaps_,
+  updateChecks_,
+  updateRecursiveSplits_
+) {
+  const metricsInfo = {
+    swaps: 0,
+    checks: 0,
+    splits: 0,
+    updateSwaps_,
+    updateChecks_,
+    updateRecursiveSplits_,
+  };
   //The bars grabbed from the DOM are 'array-like' and not an actual array so we need to convert it to an array by calling Array.from
   bars = Array.from(bars);
-  await quickSortHelper(array, bars, 0, array.length - 1, speed);
+  await quickSortHelper(array, bars, 0, array.length - 1, speed, metricsInfo);
   setButton({
     btnName: 'NEW',
     btnType: 'new-array-btn',
   });
 }
 
-async function quickSortHelper(array, bars, start, stop, speed) {
+async function quickSortHelper(array, bars, start, stop, speed, metricsInfo) {
   if (start >= stop) {
     if (start < array.length) {
       colorBars([start], colors.sorted, bars);
@@ -29,8 +45,10 @@ async function quickSortHelper(array, bars, start, stop, speed) {
       await colorBars([left, right], colors.green, bars, speed);
       swapNums(left, right, array);
       swapBarHeights(left, right, bars);
+      metricsInfo.updateSwaps_(++metricsInfo.swaps);
     } else {
       if (array[left] <= array[pivot]) {
+        metricsInfo.updateChecks_(++metricsInfo.checks);
         colorBars([left], 'white', bars);
         left++;
 
@@ -39,6 +57,7 @@ async function quickSortHelper(array, bars, start, stop, speed) {
         }
       }
       if (array[right] >= array[pivot]) {
+        metricsInfo.updateChecks_(++metricsInfo.checks);
         colorBars([right], 'white', bars);
         right--;
         if (right >= 0) {
@@ -58,9 +77,9 @@ async function quickSortHelper(array, bars, start, stop, speed) {
   }
 
   colorBars([pivot], 'white', bars);
-
-  await quickSortHelper(array, bars, start, right - 1, speed);
-  await quickSortHelper(array, bars, right + 1, stop, speed);
+  metricsInfo.updateRecursiveSplits_(++metricsInfo.splits);
+  await quickSortHelper(array, bars, start, right - 1, speed, metricsInfo);
+  await quickSortHelper(array, bars, right + 1, stop, speed, metricsInfo);
 
   for (let i = start; i <= stop + 1; i++) {
     if (i < array.length - 1) {

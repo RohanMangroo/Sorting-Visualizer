@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { startSelectedAlgo } from '../utils';
 import { updateActive } from '../store/buttonSelectionReducer';
 import { updateBarCount } from '../store/barsReducer';
+import {
+  updateSwaps,
+  updateChecks,
+  updateRecursiveSplit,
+} from '../store/metricsReducer';
 
 //================================================================================================================//
 function StartButton({
@@ -15,6 +20,9 @@ function StartButton({
   updateActive_,
   updateBarCount_,
   barCount,
+  updateSwaps_,
+  updateChecks_,
+  updateRecursiveSplits_,
 }) {
   const [button, setButton] = useState({
     btnName: 'START',
@@ -38,7 +46,17 @@ function StartButton({
 
       updateActive_(true);
       //Passing these props to a util function to start the chosen algorithm
-      startSelectedAlgo(selctdBtn, nums, bars, spd, initHths, setButton);
+      startSelectedAlgo(
+        selctdBtn,
+        nums,
+        bars,
+        spd,
+        initHths,
+        setButton,
+        updateSwaps_,
+        updateChecks_,
+        updateRecursiveSplits_
+      );
     } else {
       setButton({
         btnName: 'START',
@@ -78,6 +96,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateBarCount_: (value) => {
       return dispatch(updateBarCount(value));
+    },
+    updateSwaps_: (value) => {
+      return dispatch(updateSwaps(value));
+    },
+    updateChecks_: (value) => {
+      return dispatch(updateChecks(value));
+    },
+    updateRecursiveSplits_: (value) => {
+      return dispatch(updateRecursiveSplit(value));
     },
   };
 };

@@ -33,21 +33,69 @@ export function startSelectedAlgo(
   bars,
   speed,
   initialHeights,
-  setButton
+  setButton,
+  updateSwaps_,
+  updateChecks_,
+  updateRecursiveSplits_
 ) {
   switch (selectedAlgo) {
     case 'bubbleSort':
-      return bubbleSort(nums, bars, speed, setButton);
+      return bubbleSort(
+        nums,
+        bars,
+        speed,
+        setButton,
+        updateSwaps_,
+        updateChecks_
+      );
     case 'selectionSort':
-      return selectionSort(nums, bars, speed, setButton);
+      return selectionSort(
+        nums,
+        bars,
+        speed,
+        setButton,
+        updateSwaps_,
+        updateChecks_
+      );
     case 'insertionSort':
-      return insertionSort(nums, bars, speed, setButton);
+      return insertionSort(
+        nums,
+        bars,
+        speed,
+        setButton,
+        updateSwaps_,
+        updateChecks_
+      );
     case 'quickSort':
-      return quickSort(nums, bars, speed, setButton);
+      return quickSort(
+        nums,
+        bars,
+        speed,
+        setButton,
+        updateSwaps_,
+        updateChecks_,
+        updateRecursiveSplits_
+      );
     case 'mergeSort':
-      return mergeSort(nums, bars, speed, initialHeights, setButton);
+      return mergeSort(
+        nums,
+        bars,
+        speed,
+        initialHeights,
+        setButton,
+        updateSwaps_,
+        updateChecks_,
+        updateRecursiveSplits_
+      );
     case 'heapSort':
-      return heapSort(nums, bars, speed, setButton);
+      return heapSort(
+        nums,
+        bars,
+        speed,
+        setButton,
+        updateSwaps_,
+        updateChecks_
+      );
     default:
       return;
   }

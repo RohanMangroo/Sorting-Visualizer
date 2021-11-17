@@ -108,7 +108,7 @@ function Controls({
             disabled={active ? true : false}
             defaultValue="100"
             min="0"
-            max="300"
+            max="2000"
             step="5"
             className="slider speed-slider"
             onChange={(name) => handleSpeed(name)}
