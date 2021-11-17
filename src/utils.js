@@ -27,20 +27,20 @@ export function genRandomNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export function startSelectedAlgo(bars, buttonSelection, updates, setButton) {
+export function startSelectedAlgo(bars, buttonSelection, updates) {
   switch (buttonSelection.algoName) {
     case 'bubbleSort':
-      return bubbleSort(bars, updates, setButton);
+      return bubbleSort(bars, updates);
     case 'selectionSort':
-      return selectionSort(bars, updates, setButton);
+      return selectionSort(bars, updates);
     case 'insertionSort':
-      return insertionSort(bars, updates, setButton);
+      return insertionSort(bars, updates);
     case 'quickSort':
-      return quickSort(bars, updates, setButton);
+      return quickSort(bars, updates);
     case 'mergeSort':
-      return mergeSort(bars, updates, setButton);
+      return mergeSort(bars, updates);
     case 'heapSort':
-      return heapSort(bars, updates, setButton);
+      return heapSort(bars, updates);
     default:
       return;
   }

@@ -1,9 +1,12 @@
 import { colorBars, swapNums, swapBarHeights, colors } from '../utils';
 
-//The important idea to remember is, the array of numbers being sorted and the array of bars on the screen are not one in the same, but they do have a connection
-//When the array of numbers is generated, an array of heights is also generated
-//The array of heights is based of of the random numbers AND the current height of the container
-//This way we can assign the height of the bar as a percentage, so now the bar height will always be responsive to the container height
+/**====================================================================================================================================
+ * The array of numbers being sorted and the array of bars on the screen are NOT one in the same, but they do have a connection
+ * When the array of numbers is generated, an array of heights is also generated
+ * The array of heights is based off of the random numbers AND the current height of the container
+ * This way we can assign the height of the bar as a percentage, so now the bar height will always be responsive to the container height
+ * So no matter the current heights of the bars on the screen they always maintain their relationship to the numbers that generated them
+=======================================================================================================================================*/
 
 export default async function bubbleSort(bars, updates) {
   //Destructuring the redux states
@@ -34,7 +37,7 @@ export default async function bubbleSort(bars, updates) {
         //If the bars are out of order, they need to be swapped so we color both red
         await colorBars([j, j + 1], colors.orange, displayBars, speed);
         //The swapping of heights on the screen
-        swapBarHeights(j, j + 1, displayBars, 0);
+        swapBarHeights(j, j + 1, displayBars);
       } else {
         //If they are in order, no need to swap them so we color both green
         await colorBars([j, j + 1], colors.green, displayBars, speed * 4);
@@ -46,12 +49,6 @@ export default async function bubbleSort(bars, updates) {
     colorBars([stopPos], colors.sorted, displayBars);
     stopPos -= 1;
   }
-
-  //Setting the button to 'NEW' when algo is finished
-  // setButton({
-  //   btnName: 'NEW',
-  //   btnType: 'new-array-btn',
-  // });
 
   updateMainButton_('NEW');
 }
