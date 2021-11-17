@@ -6,7 +6,7 @@ import { updateBarCount } from '../store/barsReducer';
 import {
   updateSwaps,
   updateChecks,
-  updateRecursiveSplit,
+  updateRecursiveSplits,
 } from '../store/metricsReducer';
 
 //================================================================================================================//
@@ -66,7 +66,7 @@ const mapDispatchToProps = (dispatch) => {
         return dispatch(updateChecks(value));
       },
       updateRecursiveSplits_: (value) => {
-        return dispatch(updateRecursiveSplit(value));
+        return dispatch(updateRecursiveSplits(value));
       },
     },
   };

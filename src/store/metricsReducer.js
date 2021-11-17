@@ -1,7 +1,7 @@
 // Action Type
 const UPDATE_SWAPS = 'UPDATE_SWAPS';
 const UPDATE_CHECKS = 'UPDATE_CHECKS';
-const UPDATE_RECURSIVE_SPLIT = 'UPDATE_RECURSIVE_SPLIT';
+const UPDATE_RECURSIVE_SPLITS = 'UPDATE_RECURSIVE_SPLITS';
 
 // Action creators
 export const updateSwaps = (value) => {
@@ -24,11 +24,11 @@ export const updateChecks = (value) => {
 };
 
 // Action creators
-export const updateRecursiveSplit = (value) => {
+export const updateRecursiveSplits = (value) => {
   return {
-    type: UPDATE_RECURSIVE_SPLIT,
+    type: UPDATE_RECURSIVE_SPLITS,
     payload: {
-      recursiveSplit: value,
+      splits: value,
     },
   };
 };
@@ -36,7 +36,7 @@ export const updateRecursiveSplit = (value) => {
 const initialState = {
   swaps: 0,
   checks: 0,
-  recursiveSplit: 0,
+  splits: 0,
 };
 
 const barsReducer = (state = initialState, { type, payload }) => {
@@ -51,10 +51,10 @@ const barsReducer = (state = initialState, { type, payload }) => {
         ...state,
         checks: payload.checks,
       };
-    case UPDATE_RECURSIVE_SPLIT:
+    case UPDATE_RECURSIVE_SPLITS:
       return {
         ...state,
-        recursiveSplit: payload.recursiveSplit,
+        splits: payload.splits,
       };
     default:
       return state;
