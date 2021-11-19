@@ -53,9 +53,20 @@ export async function swapBarHeights(barOnePos, barTwoPos, bars) {
   bars[barTwoPos].style.height = heightOne;
 }
 
-export async function displaySort(start, stop, bars, heights, speed, colors) {
+//This function is used to pause the screen so we can see what is happeneing. It'a a way of animating
+export async function pause(speed) {
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, speed)
+  );
+}
+
+//This function is used in mergeSort to swap the bars on the screen
+export async function displaySort(start, stop, bars, heights, speed, metInfo) {
   for (let i = start; i <= stop; i++) {
     bars[i].style.height = `${heights[i]}%`;
+    metInfo.updates.updateSwaps_(++metInfo.swaps);
     await pause(speed / 3);
   }
 }
@@ -69,15 +80,6 @@ export async function colorBars(arrayOfPos, color, bars, speed = 0) {
 
 export function swapNums(posOne, posTwo, array) {
   [array[posOne], array[posTwo]] = [array[posTwo], array[posOne]];
-}
-
-//This function is used to pause the screen so we can see what is happeneing. It'a a way of animating
-export async function pause(speed) {
-  await new Promise((resolve) =>
-    setTimeout(() => {
-      resolve();
-    }, speed)
-  );
 }
 
 //Colors

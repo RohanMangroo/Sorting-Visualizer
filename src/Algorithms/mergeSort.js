@@ -65,7 +65,7 @@ async function mergeHelper(st, sp, mn, ax, hts, axHts, bars, metInfo) {
   await merge(st, sp, mP, mn, ax, hts, axHts, bars, metInfo);
 
   //Here we are cloring the bars
-  await displaySort(st, sp, dP, hts, spd, colors);
+  await displaySort(st, sp, dP, hts, spd, metInfo);
 }
 
 //mp === midPosition

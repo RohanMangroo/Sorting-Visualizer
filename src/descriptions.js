@@ -4,7 +4,7 @@ const descriptions = {
     algoDescript:
       'Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list, compares adjacent element and swaps them if they are in the wrong order.',
     vizDescript:
-      'Be on the look out for when the bars turn green. This means the current compared values are already in sorted order so the algorigthm will NOT make a swap and simply move on with the next value',
+      'Be on the look out for when bars turn green. This means the current compared values are already in sorted order so the algorigthm will NOT make a swap and simply move on with the next value',
     learningMode: 'Bar: 50 Speed: 30',
     complexity: `Best: O(n) Time | O(1) Space
     Average: O(n^2) Time | O(1) Space
@@ -14,9 +14,9 @@ const descriptions = {
   selectionSort: {
     title: 'Selection Sort',
     algoDescript:
-      'The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning.',
+      'The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from the unsorted partition and putting it at the beginning.',
     vizDescript:
-      'Be on the look out for the red bar. This is the current smallest element that will be swapped with the anchor element(bar in green)',
+      'Be on the look out for the red bar. This is the current smallest element that will be swapped with the anchor element(green bar)',
     learningMode: 'Bar: 40 Speed: 40',
     complexity: `Best: O(n^2) Time | O(1) Space
     Average: O(n^2) Time | O(1) Space
@@ -37,7 +37,7 @@ const descriptions = {
   },
   quickSort: {
     title: 'Quick Sort',
-    algoDescript: `Quick sort, is a pivot sorting recursive algorithm. It compares values based on an established pivot value and sections the array into elements less than the pivot and elements greater than the pivot. 
+    algoDescript: `Quick sort is a pivot sorting recursive algorithm. It compares values based on an established pivot value and sections the array into elements less than the pivot and elements greater than the pivot. 
       
       It recursively continues this work for every partition(less than partition, greater than partition) of the input array`,
     vizDescript: `Be on the look out for the green bar(pivot) and two red bars moving closer and closer to each other. The green bar is the pivot, and the two red bars are the left and right pointers respectively. 
@@ -53,13 +53,12 @@ const descriptions = {
   },
   mergeSort: {
     title: 'Merge Sort',
-    algoDescript:
-      'Merge sort repeatedly breaks down a list into n sublists until each sublist consists of a single element and merging those sublists in a manner that results into a sorted list.',
+    algoDescript: `Merge sort repeatedly breaks down a list into 'n' sublists until each sublist consists of a single element and merging those sublists in a manner that results into a sorted list.`,
     vizDescript: `Merge sort will break down an array into single elements by splitting in half at each iteration(left half, right half). 
       
-    When it reaches it's base case(single element) it will return. Remember that a single element, is by definition, sorted. At each return it will have a left sorted sub-array and a right sorted sub-array. 
+    When it reaches it's base case(single element) it will return. Remember that a single element is by definition, sorted. At each return it will have a left sorted sub-array and a right sorted sub-array. 
       
-    It will merge these two sorted sub-arrays, producing a merged sorted sub-array for that recursive level, then return. 
+    It will merge these two sorted sub-arrays, producing a merged sorted sub-array for that recursive level, then return it. 
       
     That returned sub-array is now one of the sorted halves that will be merged with the other sorted half from the opposite side of the recursive tree
     
@@ -79,9 +78,9 @@ const descriptions = {
     
     After the max heap has been built it will swap the largest value, which is now located at the 0th index with the value at the last index. Then it will rebuild the max heap in the unsorted partition and once again grab the largest element at the 0th index and swap it with the last index in the unsorted partition.
       
-    A max heap is built by conceptually viewing the array as a heap data structure, which in essance is a binary tree where every node is greater than or equal to it's two children nodes.
+    A max heap is built by conceptually viewing the array as a heap data structure, which is in essance a binary tree where every node is greater than or equal to it's two children nodes.
     
-    Be on the look out for the green and red bars. The green bar is the 'parent' and the red bars are the 'children' of the parent. The 'parent' node will ask it self, 'which one of my children is of greater value than I. If a child of greater value is found the parent will swap positions with it
+    Be on the look out for the green and red bars. The green bar is the 'parent' and the red bars are the 'children' of the parent. The 'parent' node will ask it self, 'Which one of my children is of greater value than I ?'. If a child of greater value is found the parent will swap positions with it.
     
     To calculate parent-child positional relationship use the following formula...
     
