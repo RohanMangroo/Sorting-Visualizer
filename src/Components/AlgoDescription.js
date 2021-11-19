@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import descriptions from '../descriptions';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
+import image from '../Images/sortingVizImage.jpg';
 
 function AlgoDescription({ selectedButton }) {
   const [descript, setDescript] = useState(descriptions.bubbleSort);
@@ -15,36 +16,25 @@ function AlgoDescription({ selectedButton }) {
 
   return (
     <div className="algo-description-container">
-      {descript ? (
-        <SimpleBar className="descrip-scroll">
-          <div className="descrip-sub-container">
-            <h1 className="descrip-title">{descript.title}</h1>
-            <div className="descrip-body">
-              <div className="algo-description">
-                <h3>Algorithim Description</h3>
-                <p>{descript.algoDescript}</p>
-              </div>
-              <div className="viz-description">
-                <h3>Visualization Description</h3>
-                <p>{descript.vizDescript}</p>
-              </div>
-              <div className="complexity">
-                <h4>Complexity</h4>
-                <p>{descript.complexity}</p>
-              </div>
+      <SimpleBar className="descrip-scroll">
+        <div className="descrip-sub-container">
+          <h1 className="descrip-title">{descript.title}</h1>
+          <div className="descrip-body">
+            <div className="algo-description">
+              <h3>Algorithim Description</h3>
+              <p>{descript.algoDescript}</p>
+            </div>
+            <div className="viz-description">
+              <h3>Visualization Description</h3>
+              <p>{descript.vizDescript}</p>
+            </div>
+            <div className="complexity">
+              <h4>Complexity</h4>
+              <p>{descript.complexity}</p>
             </div>
           </div>
-        </SimpleBar>
-      ) : (
-        <div className="no-algo-selected">
-          <h1>Please choose from the algorithms below</h1>
-          <p>
-            Remember to set the number of bars you'd like to see and the speed
-            at which you'd like to see them sorted
-          </p>
-          <p>Lower the speed to have a better learning experience</p>
         </div>
-      )}
+      </SimpleBar>
     </div>
   );
 }

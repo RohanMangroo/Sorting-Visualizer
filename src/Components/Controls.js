@@ -8,7 +8,9 @@ import { getClassName } from '../utils';
 function Controls({ bars, buttonSelection, updates }) {
   //This handle click function uses event delegation to update which algorithm button has been clicked. The value passed is a string of the algorithm name
   function handleButtonClick(e) {
-    updates.updateAlgoButtonSelection_(e.target.value);
+    if (e.target.value) {
+      updates.updateAlgoButtonSelection_(e.target.value);
+    }
   }
 
   //This handle change function takes the value of the slider and updates the barCount
