@@ -128,3 +128,19 @@
   line-height: 18px;
   white-space: pre-line;
 }
+
+.no-algo-selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.no-algo-selected > * {
+  text-align: center;
+  font-size: larger;
+  margin: var(--space);
+}
+
+.no-algo-selected h1 {
+  font-size: 35px;
+}

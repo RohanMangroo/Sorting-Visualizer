@@ -46,7 +46,7 @@ export function startSelectedAlgo(bars, buttonSelection, updates) {
   }
 }
 
-export function swapBarHeights(barOnePos, barTwoPos, bars) {
+export async function swapBarHeights(barOnePos, barTwoPos, bars) {
   const heightOne = bars[barOnePos].style.height;
   const heightTwo = bars[barTwoPos].style.height;
   bars[barOnePos].style.height = heightTwo;

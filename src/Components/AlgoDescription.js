@@ -7,6 +7,8 @@ import 'simplebar/dist/simplebar.min.css';
 function AlgoDescription({ selectedButton }) {
   const [descript, setDescript] = useState(descriptions.bubbleSort);
 
+  //The description that appears on the screen is chosen by the the function getSelectedDescription
+  //This function will take in the selectedButton which is a prop from the redux state and use that to pick a description
   useEffect(() => {
     setDescript(getSelectedDescription(selectedButton, descriptions));
   }, [selectedButton]);
@@ -30,15 +32,18 @@ function AlgoDescription({ selectedButton }) {
                 <h4>Complexity</h4>
                 <p>{descript.complexity}</p>
               </div>
-              {/* <div className="learning-display">
-              <h4>Learning Mode</h4>
-              <p>{descript.learningMode}</p>
-            </div> */}
             </div>
           </div>
         </SimpleBar>
       ) : (
-        <div>Please choose an algorithm from below</div>
+        <div className="no-algo-selected">
+          <h1>Please choose from the algorithms below</h1>
+          <p>
+            Remember to set the number of bars you'd like to see and the speed
+            at which you'd like to see them sorted
+          </p>
+          <p>Lower the speed to have a better learning experience</p>
+        </div>
       )}
     </div>
   );
@@ -47,6 +52,7 @@ function AlgoDescription({ selectedButton }) {
 function getSelectedDescription(selectedButton, descriptions) {
   return descriptions[selectedButton];
 }
+
 const mapStateToProps = ({ buttonSelection }) => {
   return {
     selectedButton: buttonSelection.algoName,
