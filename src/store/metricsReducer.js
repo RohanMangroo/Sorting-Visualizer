@@ -2,6 +2,7 @@
 const UPDATE_SWAPS = 'UPDATE_SWAPS';
 const UPDATE_CHECKS = 'UPDATE_CHECKS';
 const UPDATE_RECURSIVE_SPLITS = 'UPDATE_RECURSIVE_SPLITS';
+const RESET_METRICS = 'RESET_METRICS';
 
 // Action creators
 export const updateSwaps = (value) => {
@@ -33,6 +34,16 @@ export const updateRecursiveSplits = (value) => {
   };
 };
 
+export const resetMetrics = () => {
+  return {
+    type: RESET_METRICS,
+    payload: {
+      swaps: 0,
+      checks: 0,
+      splits: 0,
+    },
+  };
+};
 const initialState = {
   swaps: 0,
   checks: 0,
@@ -55,6 +66,11 @@ const barsReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         splits: payload.splits,
+      };
+    case RESET_METRICS:
+      return {
+        ...state,
+        ...payload,
       };
     default:
       return state;

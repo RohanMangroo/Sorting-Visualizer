@@ -7,6 +7,7 @@ import {
   updateSwaps,
   updateChecks,
   updateRecursiveSplits,
+  resetMetrics,
 } from '../store/metricsReducer';
 
 //================================================================================================================//
@@ -19,6 +20,7 @@ function StartButton({ bars, buttonSelection, updates }) {
         //In order to for the bars to re-render I must pass it a prop of different value, so I'm passing it the barCount+1
         updates.updateBarCount_(++bars.barCount);
         updates.updateMainButton_('START');
+        updates.resetMetrics_();
         break;
       case 'START':
         updates.updateMainButton_('STOP');
@@ -67,6 +69,9 @@ const mapDispatchToProps = (dispatch) => {
       },
       updateRecursiveSplits_: (value) => {
         return dispatch(updateRecursiveSplits(value));
+      },
+      resetMetrics_: () => {
+        return dispatch(resetMetrics());
       },
     },
   };

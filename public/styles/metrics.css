@@ -23,6 +23,19 @@
 .metrics-sub-container {
   background-color: var(--secondary-accent);
   border-radius: 10px;
-  height: var(--metric-sub-container-height);
+  height: calc(var(--metric-sub-container-height) * 2);
   width: var(--metric-sub-container-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 25px;
+}
+
+.metrics-sub-container div {
+  margin-left: var(--space);
+}
+
+.metrics-sub-container span {
+  margin-left: var(--space);
+  color: rgb(134, 1, 1);
 }
