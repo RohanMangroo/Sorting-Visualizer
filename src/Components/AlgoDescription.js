@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import descriptions from '../descriptions';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
-import image from '../Images/sortingVizImage.jpg';
 
 function AlgoDescription({ selectedButton }) {
   const [descript, setDescript] = useState(descriptions.bubbleSort);
