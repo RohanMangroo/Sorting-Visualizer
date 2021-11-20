@@ -9,3 +9,5 @@ If you'd like to try it out locally, simply clone down and 'npm run start'
 I will be updating it as the months go on but for now it's done and I'll be working on new projects
 
 It's best used on desktop as I haven't learned much responsive design yet
+
+https://rohanmangroo.github.io/Sorting-Visualizer/
