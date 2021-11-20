@@ -1,0 +1,186 @@
+* {
+  --page-bottom-left-height: var(--page-child-height-bottom);
+  --page-bottom-left-width: calc(var(--width) * 3 / 5);
+
+  --controls-container-height: calc(var(--page-child-height-bottom) * 4 / 5);
+  --controls-container-width: calc(var(--page-bottom-left-width) * 6.55 / 7);
+
+  --algo-button-container-height: var(--controls-container-height);
+  --algo-buttons-container-width: calc(var(--controls-container-width) * 2 / 3);
+
+  --algo-buttons-height: calc(var(--controls-container-height) * 2 / 3);
+  --algo-buttons-width: calc(var(--algo-buttons-container-width) * 2.7 / 3);
+
+  --button-height: calc(var(--algo-buttons-height) * 1.5 / 4);
+  --button-width: calc(var(--algo-buttons-width) * 1 / 4);
+
+  --button-font-size: calc(var(--button-width) * 8 / 100);
+
+  --button-inactive-bg-color: #c4c4c4;
+
+  --sliders-container-width: calc(var(--controls-container-width) * 1 / 3);
+  --sliders-thumb-width: calc(var(--sliders-container-width) * 0.7 / 9);
+}
+
+.controls-container {
+  height: var(--controls-container-height);
+  width: var(--controls-container-width);
+  margin: calc(var(--space));
+  align-self: center;
+  /*Container for all Control components*/
+  display: flex;
+}
+
+.algo-buttons-container {
+  background-color: lightgray;
+  border-radius: 10px;
+  height: var(--algo-button-container-height);
+  width: var(--algo-buttons-container-width);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-right: calc(var(--space) * 2);
+  display: flex;
+  justify-content: center;
+}
+
+.algo-buttons {
+  height: var(--algo-buttons-height);
+  width: var(--algo-buttons-width);
+  display: flex;
+  justify-content: space-evenly;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+}
+
+.algo-btn {
+  border-style: none;
+  border-radius: 10px;
+  height: var(--button-height);
+  width: var(--button-width);
+  font-size: var(--button-font-size);
+  margin-right: var(--space);
+  background-color: var(--green);
+  color: white;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.algo-btn:active {
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+.disable-btn {
+  background-color: rgb(187, 187, 187);
+}
+.active-btn {
+  background-color: rgb(235, 235, 92);
+  color: black;
+  box-shadow: none;
+}
+
+.sliders-container {
+  height: var(--controls-container-height);
+  width: var(--sliders-container-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.sliders {
+  background-color: lightgray;
+  height: calc(var(--controls-container-height) / 2);
+  /* width: var(--sliders-container-width); */
+  width: var(--sliders-container-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.sliders > div {
+  width: calc(var(--sliders-container-width) * 0.6);
+  display: flex;
+  justify-content: space-between;
+}
+
+.sliders > div > span {
+  color: rgb(161, 1, 1);
+}
+.slider {
+  -webkit-appearance: none;
+  width: 75%;
+  height: 20%;
+  border-radius: 10px;
+  align-self: center;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: var(--sliders-thumb-width);
+  height: var(--sliders-thumb-width);
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+.bar-slider {
+  margin-bottom: var(--space);
+}
+
+.speed-slider {
+  direction: rtl;
+}
+.slider:disabled {
+  -webkit-appearance: none;
+  width: 75%;
+  height: 20%;
+  border-radius: 10px;
+  background-color: rgb(250, 250, 250);
+}
+
+.slider:disabled::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: var(--sliders-thumb-width);
+  height: var(--sliders-thumb-width);
+  border-radius: 50%;
+  background: rgb(195, 195, 195);
+  cursor: pointer;
+}
+/* .slidecontainer {
+  width: 100%;
+} */
+
+/* .slider {
+  
+  width: 75%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+} */
